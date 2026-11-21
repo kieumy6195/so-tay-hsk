@@ -579,6 +579,10 @@ body{min-height:100vh;min-height:100dvh}
 .page>h2.title{position:relative;z-index:1;max-width:calc(100% - 120px)}
 .page>.sub{position:relative;z-index:1;max-width:calc(100% - 110px)}
 @media(max-width:899px){.doodle{width:84px;height:70px;top:10px;right:8px}.page>h2.title{max-width:calc(100% - 78px)}.page>.sub{max-width:none}}
+.qsetF{margin:8px 0 4px}.qsetF summary{font-size:14px;color:var(--ink)}
+.qset2{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:6px}
+.qset2 select{font:inherit;font-size:13.5px;border:2px solid #e4dccb;border-radius:9px;padding:5px 4px;background:#fffdf6;color:var(--ink);min-width:0}
+.qNewBtn{display:block;width:100%;margin:6px 0 10px;font-family:'Mali',cursive;font-weight:700;font-size:18px;border:2px solid #2b2b3a;background:var(--y);border-radius:14px;padding:12px;cursor:pointer;box-shadow:3px 3px 0 #2b2b3a}
 </style>
 </head>
 <body>
@@ -759,7 +763,7 @@ body{min-height:100vh;min-height:100dvh}
 <!-- ================= QUIZ ================= -->
 <section class="page" id="luyen-thi">
   <h2 class="title"><span class="zh">练习</span>Luyện thi</h2>
-  <p class="sub">Bấm chọn là chấm ngay, có giải thích. Mỗi lần “Làm lại” câu hỏi và đáp án đều được xáo trộn.</p>
+  <p class="sub">Chọn là chấm ngay, có giải thích.</p>
   <div class="stk">
   <div class="qtabs" id="qzTabs">
     <button data-t="gram">📝 Ngữ pháp<small>45 câu</small></button>
@@ -1279,11 +1283,11 @@ function qScore(){
   const n=qItems.length,done=Object.keys(qRes).length,ok=Object.values(qRes).filter(Boolean).length;
   const pct=done?Math.round(ok/done*100):0;
   qzBar.innerHTML=`<span class="qsc">✅ <b>${ok}</b> <span style="color:var(--red)">❌ <b>${done-ok}</b></span> <span class="qtot">${done}/${n}</span></span>
-   <div class="qbtns"><button onclick="qStart(qTab)">🔁 Làm lại</button>${done-ok>0?'<button onclick="qWrong()">🎯 Câu sai</button>':''}</div>
+   <div class="qbtns"><button onclick="qNew()">🔁 Làm lại</button>${done-ok>0?'<button onclick="qWrong()">🎯 Câu sai</button>':''}</div>
    ${done===n&&n?`<div class="qend">${pct>=80?'🏆 Xuất sắc!':pct>=60?'👍 Đạt rồi, cố thêm chút nữa!':'💪 Ôn lại phần ngữ pháp rồi làm lại nhé!'} Điểm: <b>${pct}%</b></div>`:''}`;
 }
 function mark(i,ok,el){qRes[i]=ok;el.classList.add(ok?'qok':'qno');qScore()}
-function qRender(){setTimeout(()=>document.querySelectorAll('#qzBody .qopts').forEach(o=>{if([...o.children].some(b=>b.textContent.trim().length>14))o.classList.add('long')}),0);
+function qRender(){setTimeout(()=>{document.querySelectorAll('#qzBody .qopts').forEach(o=>{if([...o.children].some(b=>b.textContent.trim().length>14))o.classList.add('long')});if(qItems.length)qzBody.insertAdjacentHTML('beforeend',`<button class="qNewBtn" onclick="qNew()">${qTab==='vocab'?'🎲 Tạo đề mới':'🔁 Làm lại đề này (xáo câu)'}</button>`)},0);
   qRes={};
   const R={hard:rGram,diff:rGram,gram:rGram,order:rOrder,right:rRight,write:rWrite,vocab:rVocab}[qTab];
   qzBody.innerHTML=qItems.map((it,i)=>{const h=R(it,i);const bp=h.includes('class="qpy"')||qTab==='order',bv=h.includes('class="qvi"');return `<div class="qcard" id="qc${i}"><div class="qn"><span>Câu ${i+1}</span>${bp||bv?`<span class="qhb">${bp?`<button class="qpyb" onclick="this.closest('.qcard').classList.toggle('showpy')">🔤 Pinyin</button>`:''}${bv?`<button class="qvib" onclick="this.closest('.qcard').classList.toggle('showvi')">📖 Nghĩa</button>`:''}</span>`:''}</div>${h}</div>`}).join('');
@@ -1364,11 +1368,12 @@ function rVocab(it,i){
 }
 let vLv='all',vMode='hm',vN=20;
 function vocabSetup(){
-  return `<div class="qset">
-   <label>Nguồn từ: <select id="vLv"><option value="all">Tất cả</option><option value="1">HSK1</option><option value="2">HSK2</option><option value="3">HSK3</option><option value="4">HSK4</option></select></label>
-   <label>Dạng: <select id="vMode"><option value="hm">Chữ Hán → Nghĩa</option><option value="mh">Nghĩa → Chữ Hán</option><option value="hp">Chữ Hán → Pinyin (thanh điệu)</option></select></label>
-   <label>Số câu: <select id="vN"><option>10</option><option selected>20</option><option>30</option><option>50</option></select></label>
-   <button onclick="qStart('vocab')">▶ Tạo đề mới</button></div>`;
+  const LT={all:'Tất cả cấp',1:'HSK1',2:'HSK2',3:'HSK3',4:'HSK4'},MT={hm:'Chữ Hán → Nghĩa',mh:'Nghĩa → Chữ Hán',hp:'Chữ Hán → Pinyin'};
+  const op=window._vOpen;window._vOpen=false;
+  return `<details class="fold qsetF" ${op?'open':''}><summary><b>${LT[vLv]||'Tất cả cấp'}</b> · ${MT[vMode]} · ${vN} câu</summary><div class="qset2">
+   <select id="vLv"><option value="all">Tất cả cấp</option><option value="1">HSK1</option><option value="2">HSK2</option><option value="3">HSK3</option><option value="4">HSK4</option></select>
+   <select id="vMode"><option value="hm">Chữ Hán → Nghĩa</option><option value="mh">Nghĩa → Chữ Hán</option><option value="hp">Chữ Hán → Pinyin</option></select>
+   <select id="vN"><option value="10">10 câu</option><option value="20">20 câu</option><option value="30">30 câu</option><option value="50">50 câu</option></select></div></details>`;
 }
 window.qStart=tab=>{
   qTab=tab;document.querySelectorAll('#qzTabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===tab));{const bx=document.getElementById('qzTabs'),o=bx.querySelector('.on');if(o&&bx.scrollWidth>bx.clientWidth)bx.scrollLeft=o.offsetLeft-bx.clientWidth/2+o.offsetWidth/2}
@@ -1376,12 +1381,13 @@ window.qStart=tab=>{
   if(tab==='vocab'){
     const s=document.getElementById('vLv'),m=document.getElementById('vMode'),n=document.getElementById('vN');
     s.value=vLv;m.value=vMode;n.value=vN;
-    s.onchange=()=>{vLv=s.value};m.onchange=()=>{vMode=m.value};n.onchange=()=>{vN=+n.value};
+    s.onchange=()=>{vLv=s.value;window._vOpen=true;qStart('vocab')};m.onchange=()=>{vMode=m.value;window._vOpen=true;qStart('vocab')};n.onchange=()=>{vN=+n.value;window._vOpen=true;qStart('vocab')};n.value=String(vN);
     const src=(LV[vLv]||POOL).filter((w,k,a)=>a.findIndex(x=>x.w===w.w)===k);
     qItems=sh(src).slice(0,vN).map(w=>({...w}));
   } else qItems=sh({gram:QG,hard:QH,diff:QD,order:QO,right:QR,write:QW}[tab]).map(x=>Object.assign(x.slice(),{}));
   qRender();if(tab==='order')qItems.forEach((x,i)=>drawO(i));
 };
+window.qNew=()=>{qStart(qTab);window.scrollTo({top:0,behavior:'smooth'})};
 window.qTogAll=()=>{qPyAll=!qPyAll;document.querySelectorAll('#qzBody .qcard').forEach(c=>c.classList.toggle('showpy',qPyAll));qScore()};
 window.qWrong=()=>{
   const keep=qItems.filter((x,i)=>qRes[i]===false).map(x=>Object.assign(Array.isArray(x)?x.slice():{...x},{}));

@@ -658,6 +658,16 @@ html{background:#fffdf6}
 .wdBtns button{flex:1;font-family:'Mali',cursive;font-weight:700;font-size:14px;border:2px solid var(--ln);background:#fff;border-radius:12px;padding:7px 4px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px}
 .wdBtns button.y{background:var(--y);border-color:#e0b800}
 .wdSpk{border:0;background:var(--b);border-radius:99px;padding:2px 9px;margin-left:4px;cursor:pointer;vertical-align:middle}
+
+/* ===== v16: chip đang chọn có đuôi như bong bóng thoại ===== */
+.libbar.on{padding-bottom:14px}
+#qzTabs{padding-bottom:10px}
+.libbar button,.qtabs button{position:relative}
+.libbar button.on::before,.libbar button.on::after,.qtabs button.on::before,.qtabs button.on::after{content:"";position:absolute;left:50%;width:0;height:0;border-style:solid;pointer-events:none}
+.libbar button.on::before,.qtabs button.on::before{bottom:-10px;margin-left:-8px;border-width:9px 8px 0 8px;border-color:#e0b800 transparent transparent transparent}
+.libbar button.on::after,.qtabs button.on::after{bottom:-6px;margin-left:-6px;border-width:7px 6px 0 6px;border-color:var(--y) transparent transparent transparent}
+.libbar button.on,.qtabs button.on{animation:chipPop .35s cubic-bezier(.3,1.6,.5,1)}
+@keyframes chipPop{0%{transform:scale(.92)}60%{transform:scale(1.05)}100%{transform:none}}
 </style>
 </head>
 <body>
@@ -1653,7 +1663,7 @@ function show(v,sub,keepScroll){
   $('libbar').classList.toggle('on',v==='lib');
   $('libbar').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.l===st.lib));
   const lb=$('libbar').querySelector('.on');if(lb&&v==='lib')lb.scrollIntoView({inline:'center',block:'nearest'});
-  const t=TABS.find(x=>x[0]===v),L=LIB.find(l=>l[0]===st.lib);$('mTitle').innerHTML=v==='lib'&&L?ICO[L[1]]+'<span>'+L[2]+'</span>':ICO[t[1]]+'<span>'+t[2]+'</span>';
+  const t=TABS.find(x=>x[0]===v),L=LIB.find(l=>l[0]===st.lib);$('mTitle').innerHTML=ICO[t[1]]+'<span>'+t[2]+'</span>';
   if(v==='home')renderHome();
   if(v==='lib'&&st.lib==='ngu-phap')renderGram();
   if(v==='srs'&&window.hskSRS)hskSRS.refresh();

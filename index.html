@@ -1748,6 +1748,7 @@ window.hskDrill=t=>window.qStart(t);
 
 /* ===== 🔄 Đồng bộ tiến độ qua Google Apps Script của chính người học ===== */
 (()=>{
+const DEF_URL='https://script.google.com/macros/s/AKfycbwHpDeD9Sa0cqvMUVqSm2bWZPPaeTb4X3LT2Au8UMV1yw3cYevA7DfX__vBlNHKeM-c5Q/exec';
 const CFG='hskSyncCfg',KEYS=['hskSRS.v1','hskShapeErr','hskPyErr','hskMyTips'];
 const get=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
 const set=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
@@ -1798,8 +1799,8 @@ window.addEventListener('online',()=>cfg&&sync(false));
 /* thẻ trên màn Hôm nay */
 window.hskSyncCard=()=>`<div class="hCard hBak" id="syncCard"><b style="font-family:'Mali',cursive;font-size:18px">🔄 Đồng bộ giữa các máy</b>
   ${cfg?`<div class="bkTxt" id="syncSt">${statusText()}</div><div class="bkBtns"><button data-sy="now">🔄 Đồng bộ ngay</button><button data-sy="code">📋 Mã cho máy khác</button><button data-sy="off">Ngắt kết nối</button></div>`
-  :`<div class="bkTxt">Dán <b>mã đồng bộ</b> (bắt đầu bằng HSKSYNC1:) để tiến độ tự đồng bộ giữa điện thoại và máy tính.</div>
-    <div class="bkArea"><textarea id="syIn" rows="2" placeholder="HSKSYNC1:…"></textarea><button data-sy="on">Kết nối</button></div>`}</div>`;
+  :`<div class="bkTxt">Dán <b>mã đồng bộ</b> (mã ngắn hoặc mã dài HSKSYNC1:…) để tiến độ tự đồng bộ giữa điện thoại và máy tính.</div>
+    <div class="bkArea"><textarea id="syIn" rows="2" placeholder="Dán mã đồng bộ…" autocapitalize="off" autocorrect="off" spellcheck="false"></textarea><button data-sy="on">Kết nối</button></div>`}</div>`;
 document.addEventListener('click',e=>{
   const b=e.target.closest('[data-sy]');if(!b)return;const a=b.dataset.sy;
   if(a==='now')sync(false);
@@ -1808,10 +1809,14 @@ document.addEventListener('click',e=>{
     try{navigator.clipboard.writeText(code).then(done,()=>{el.innerHTML='<textarea readonly rows="2" style="width:100%">'+code+'</textarea>'})}catch(x){el.innerHTML='<textarea readonly rows="2" style="width:100%">'+code+'</textarea>'}}
   else if(a==='off'){if(confirm('Ngắt đồng bộ trên máy này? Tiến độ trên máy vẫn giữ nguyên.')){localStorage.removeItem(CFG);cfg=null;window.hskShow&&hskShow('home',null,true)}}
   else if(a==='on'){
-    const v=(document.getElementById('syIn').value||'').trim();
-    try{if(!v.startsWith('HSKSYNC1:'))throw 0;const c=JSON.parse(atob(v.slice(9)));if(!c.u||!c.k)throw 0;
+    const raw=(document.getElementById('syIn').value||'').replace(/[\s\u200b-\u200d\ufeff]/g,'');
+    try{let c;const m=raw.match(/HSKSYNC1:([A-Za-z0-9+/=_-]+)/);
+      if(m){c=JSON.parse(atob(m[1].replace(/-/g,'+').replace(/_/g,'/')))}
+      else if(/^[A-Za-z0-9_-]{16,64}$/.test(raw)){c={u:DEF_URL,k:raw}}
+      else throw 0;
+      if(!c.u||!c.k)throw 0;
       cfg=c;set(CFG,JSON.stringify(c));sessionStorage.removeItem('hskSynced');window.hskShow&&hskShow('home',null,true);sync(true)}
-    catch(x){alert('Mã đồng bộ không hợp lệ.')}
+    catch(x){alert('Mã đồng bộ không hợp lệ. Kiểm tra lại xem đã dán đủ mã chưa.')}
   }
 });
 if(cfg)setTimeout(()=>sync(true),800);

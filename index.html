@@ -13,7 +13,7 @@
 
 <title>Sổ Tay Vàng HSK 1·2·3·4</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=Mali:wght@500;600;700&family=Noto+Sans+SC:wght@400;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;600;800&family=Mali:wght@500;600;700&family=Noto+Sans+SC:wght@400;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#fffdf6; --line:#dfe9f5; --margin:#f3a5a5; --ink:#2b2b3a; --muted:#6b6b80;
@@ -668,6 +668,126 @@ html{background:#fffdf6}
 .libbar button.on::after,.qtabs button.on::after{bottom:-6px;margin-left:-6px;border-width:7px 6px 0 6px;border-color:var(--y) transparent transparent transparent}
 .libbar button.on,.qtabs button.on{animation:chipPop .35s cubic-bezier(.3,1.6,.5,1)}
 @keyframes chipPop{0%{transform:scale(.92)}60%{transform:scale(1.05)}100%{transform:none}}
+
+/* ================= THEME: COZY (game-style) ================= */
+html.cozyH{background:#fff8ea}
+body.cozy{--ink:#4a2e22;--muted:#9a7a62;--paper:#fff8ea;--line:#f4e8d3;--margin:#f4b896;--ln:#f0d6ae;--sh:#ecc48f;--y:#ffd65c}
+body.cozy #mtop,
+body.cozy #tabbar button,
+body.cozy .bkArea button,
+body.cozy .bkBtns button,
+body.cozy .card .tag,
+body.cozy .card h4,
+body.cozy .cheer,
+body.cozy .chip,
+body.cozy .chipbar button,
+body.cozy .cover .lv span,
+body.cozy .cover h1,
+body.cozy .dayHead h4,
+body.cozy .days button,
+body.cozy .dnav button,
+body.cozy .drBtns button,
+body.cozy .drEnd .drBig,
+body.cozy .drHead,
+body.cozy .drNext,
+body.cozy .foot,
+body.cozy .gift,
+body.cozy .goBtn,
+body.cozy .hAct b,
+body.cozy .hHero .big,
+body.cozy .hHero .go,
+body.cozy .hProg .row .lb,
+body.cozy .hSec,
+body.cozy .libbar button,
+body.cozy .lvpick button,
+body.cozy .pLb,
+body.cozy .qNewBtn,
+body.cozy .qbtns button,
+body.cozy .qend,
+body.cozy .qn,
+body.cozy .qpyb,
+body.cozy .qpyrow button,
+body.cozy .qset button,
+body.cozy .qtabs button,
+body.cozy .qvib,
+body.cozy .qwrite button,
+body.cozy .rtx,
+body.cozy .rule .n,
+body.cozy .rule h5,
+body.cozy .seg button,
+body.cozy .shH,
+body.cozy .smH,
+body.cozy .srsFlip,
+body.cozy .srsG button,
+body.cozy .srsLv button,
+body.cozy .srsStats b,
+body.cozy .streak b,
+body.cozy .tTitle,
+body.cozy .tabbtn,
+body.cozy .tbl th,
+body.cozy .topbar,
+body.cozy .topbar button,
+body.cozy .vbar button,
+body.cozy .w .lv,
+body.cozy .wdBlk h5,
+body.cozy .wdBtns button,
+body.cozy .wdTop,
+body.cozy h2.title,
+body.cozy h3,
+body.cozy nav a{font-family:'Baloo 2','Mali',cursive!important}
+body.cozy h2.title{font-weight:800;letter-spacing:-.01em}
+body.cozy #mtop{background:#fff8ea;border-bottom:2.5px solid #f4e3c6}
+body.cozy #mtop .t{font-family:'Baloo 2',cursive;font-weight:800;font-size:19px}
+body.cozy #mtop button{background:#fbe8c8;border-radius:14px;box-shadow:0 3px 0 #e8c08a}
+body.cozy #tabbar{background:#fff8ea;border-top:2.5px solid #f4e3c6}
+body.cozy #tabbar button{font-family:'Baloo 2',cursive;font-weight:700;color:#b39478;-webkit-text-fill-color:#b39478}
+body.cozy #tabbar button.on{background:var(--y);color:var(--ink);-webkit-text-fill-color:var(--ink);border-radius:16px;box-shadow:0 4px 0 #c97a2e}
+/* thẻ / panel */
+body.cozy .hv2,body.cozy .wd,body.cozy .srsCard,body.cozy .qcard,body.cozy .prog2{background:#fffdf7;border:3px solid #f2c98e;border-radius:22px;box-shadow:0 6px 0 #e8b47a}
+body.cozy .card{border-width:3px;border-radius:20px;box-shadow:0 6px 0 var(--c,#eee)}
+body.cozy .wd:before{height:7px}
+/* nút chính 3D */
+body.cozy .goBtn,body.cozy .qNewBtn,body.cozy .wdBtns button.y,body.cozy #srsFlipBtn{background:var(--y);border:0;border-radius:18px;box-shadow:0 5px 0 #c97a2e;color:var(--ink);font-weight:800;transition:transform .08s,box-shadow .08s}
+body.cozy .goBtn{font-size:20px;padding:12px}
+body.cozy .goBtn:active,body.cozy .qNewBtn:active,body.cozy #srsFlipBtn:active,body.cozy .wdBtns button:active{transform:translateY(4px);box-shadow:0 1px 0 #c97a2e}
+body.cozy .wdBtns button{border:2.5px solid #f0d6ae;box-shadow:0 3px 0 #f0d6ae;border-radius:14px}
+/* nút phụ, lựa chọn */
+body.cozy .quick button,body.cozy .qopts button,body.cozy .drOpts button{background:#fffdf7;border:2.5px solid #f0d6ae;border-radius:16px;box-shadow:0 4px 0 #f0d6ae;transition:transform .08s,box-shadow .08s}
+body.cozy .quick button:active,body.cozy .qopts button:not(:disabled):active,body.cozy .drOpts button:not(:disabled):active{transform:translateY(3px);box-shadow:0 1px 0 #f0d6ae}
+body.cozy .qopts button.right,body.cozy .drOpts button.right{background:#8ad16a;border-color:#5aa340;box-shadow:0 4px 0 #4a8a33;color:#fff;-webkit-text-fill-color:#fff;font-weight:700}
+body.cozy .qopts button.wrong,body.cozy .drOpts button.wrong{background:#ff8a5c;border-color:#e0602f;box-shadow:0 4px 0 #b8461d;color:#fff;-webkit-text-fill-color:#fff}
+/* chip lọc */
+body.cozy .libbar.on{background:#fff8ea}
+body.cozy .libbar button,body.cozy .qtabs button{font-weight:700;background:#fffdf7;border:2.5px solid #f0d6ae;box-shadow:0 3px 0 #f0d6ae;color:var(--ink);-webkit-text-fill-color:var(--ink)}
+body.cozy .libbar button.on,body.cozy .qtabs button.on{background:var(--y);border-color:#c97a2e;box-shadow:0 3px 0 #c97a2e}
+body.cozy .libbar button.on::before,body.cozy .qtabs button.on::before{bottom:-13px;border-color:#c97a2e transparent transparent transparent}
+body.cozy .libbar button.on::after,body.cozy .qtabs button.on::after{bottom:-8px;border-color:var(--y) transparent transparent transparent}
+body.cozy .libbar.on{padding-bottom:17px}
+body.cozy .seg{background:#fffdf7;border:2.5px solid #f0d6ae;border-radius:16px}
+body.cozy .seg button{font-weight:800;border-radius:12px}
+body.cozy .seg button.on{box-shadow:0 3px 0 rgba(74,46,34,.25)}
+/* thanh tiến độ sọc */
+body.cozy .pBar{height:14px;background:#6e4b39;border-radius:99px}
+body.cozy .pBar i{background-image:repeating-linear-gradient(-45deg,rgba(255,255,255,.3) 0 6px,transparent 6px 12px)}
+body.cozy .pBar i.a{opacity:.5}
+body.cozy .pLb{font-family:'Baloo 2',cursive;font-weight:800}
+/* nút chấm điểm ôn tập */
+body.cozy .srsG button{border:0;border-radius:16px;color:var(--ink);font-weight:800}
+body.cozy .srsG .g0{background:#ff9b7a;box-shadow:0 4px 0 #c95d3c}
+body.cozy .srsG .g1{background:#ffc66b;box-shadow:0 4px 0 #c98a2e}
+body.cozy .srsG .g2{background:#9ad97c;box-shadow:0 4px 0 #4f9a35}
+body.cozy .srsG .g3{background:#8ccbf5;box-shadow:0 4px 0 #3a87bd}
+body.cozy .srsG button small{color:rgba(74,46,34,.75)}
+body.cozy .srsG button:active{transform:translateY(3px);box-shadow:none}
+body.cozy .formula{border-radius:14px;border-color:#f2c94c}
+body.cozy .smBox{border:3px solid #f2c98e;border-radius:24px;box-shadow:0 7px 0 #e8b47a;background:#fff8ea}
+.thmSeg{display:flex;gap:8px;margin-top:8px}
+.thmSeg button{flex:1;font-family:'Baloo 2','Mali',cursive;font-weight:700;font-size:15px;border:2.5px solid var(--ln);background:#fff;border-radius:14px;padding:8px;cursor:pointer}
+.thmSeg button.on{background:var(--y);border-color:#c97a2e}
+body.cozy .srsStats>*{border:2.5px solid #f0d6ae!important;border-radius:16px!important;box-shadow:0 3px 0 #f0d6ae!important;background:#fffdf7!important}
+body.cozy details.fold,body.cozy .srsSet{border-color:#f0d6ae!important;border-radius:16px!important}
+body.cozy .drLv button,body.cozy .gf button,body.cozy .vbar button{border:2px solid #f0d6ae;box-shadow:0 2px 0 #f0d6ae;font-family:'Baloo 2','Mali',cursive;font-weight:700}
+body.cozy .drLv button.on,body.cozy .vbar button.on{background:var(--y);border-color:#c97a2e;box-shadow:0 2px 0 #c97a2e}
 </style>
 </head>
 <body>
@@ -1693,7 +1813,7 @@ function settings(refresh){
   if(!m){document.body.insertAdjacentHTML('beforeend','<div id="setModal"><div class="smBg"></div><div class="smBox"></div></div>');m=$('setModal');
     m.addEventListener('click',e=>{if(e.target.classList.contains('smBg')||e.target.closest('.smX'))m.classList.remove('on')})}
   if(refresh&&!m.classList.contains('on'))return;
-  m.querySelector('.smBox').innerHTML=`<button class="smX" aria-label="Đóng">✕</button><h3 class="smH">${ICO.gear} Cài đặt</h3>${window.hskSyncCard?hskSyncCard():''}${BAKHTML}`;
+  m.querySelector('.smBox').innerHTML=`<button class="smX" aria-label="Đóng">✕</button><h3 class="smH">${ICO.gear} Cài đặt</h3>${window.hskSyncCard?hskSyncCard():''}<div class="setBox"><b style="font-family:'Mali',cursive;font-size:18px">🎨 Giao diện</b><div class="thmSeg"><button data-thm="cozy" class="${document.body.classList.contains('cozy')?'on':''}">Cozy</button><button data-thm="note" class="${document.body.classList.contains('cozy')?'':'on'}">Sổ tay</button></div></div>${BAKHTML}`;
   m.classList.add('on');
 }
 window.hskSettings=settings;
@@ -2265,6 +2385,14 @@ function fromHash(){if(location.hash!=='#wotd')return;flip=true;window.hskShow&&
   const t=setInterval(()=>{const b=document.getElementById('wotdBox');if(b&&D){clearInterval(t);render(true);b.scrollIntoView({block:'start'});scrollBy(0,-60)}},120);setTimeout(()=>clearInterval(t),4000)}
 addEventListener('hashchange',fromHash);
 render();fromHash();
+})();
+
+/* ===== Theme ===== */
+(()=>{const apply=v=>{const c=v!=='note';document.body.classList.toggle('cozy',c);document.documentElement.classList.toggle('cozyH',c);
+  const m=document.querySelector('meta[name=theme-color]');if(m)m.content=c?'#fff8ea':'#fffdf6'};
+let th='cozy';try{th=localStorage.getItem('hskTheme')||'cozy'}catch(e){}apply(th);
+document.addEventListener('click',e=>{const b=e.target.closest('[data-thm]');if(!b)return;try{localStorage.setItem('hskTheme',b.dataset.thm)}catch(e){}apply(b.dataset.thm);
+  b.parentElement.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b))});
 })();
 </script>
 </body>

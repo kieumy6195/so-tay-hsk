@@ -560,6 +560,20 @@ details.fold[open]>summary{margin-bottom:8px}
 .qopts.long button{text-align:left}
 
 #qzTabs button{display:inline-flex;align-items:center;gap:5px}#qzTabs button .ico{width:18px;height:18px}#qzTabs button.on{--ac:rgba(255,255,255,.25)}
+
+/* ===== v6: nền & khổ giấy ===== */
+html{background:#e9e3d6}
+body{min-height:100vh;min-height:100dvh}
+@media(max-width:899px){
+  .book{padding:0;margin:0}
+  .page{border-radius:0;margin:0;box-shadow:none;min-height:calc(100dvh - var(--hdr) - 74px);
+    padding:20px 14px 28px 26px;
+    background-image:linear-gradient(90deg,transparent 14px,var(--margin) 14px,var(--margin) 15.5px,transparent 15.5px),repeating-linear-gradient(var(--paper) 0 31px,var(--line) 31px 32px)}
+  .page:before{display:none}
+  .libbar.on{margin:0;background:var(--paper);border-bottom:2px dashed #e6dfcf}
+  .foot{display:none}
+}
+
 </style>
 </head>
 <body>

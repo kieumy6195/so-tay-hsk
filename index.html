@@ -1322,7 +1322,7 @@ function grade(g){
   if(!cur)return;
   const w=cur,isNew=!S.c[w.k];
   if(isNew&&g!==4){ndFix();S.nd.n++}
-  S.c[w.k]=next(S.c[w.k],g);save();
+  S.c[w.k]=next(S.c[w.k],g);S.c[w.k].t=Date.now();save();window.hskSyncSoon&&hskSyncSoon();
   Q.shift();
   if(g===0)Q.splice(Math.min(3,Q.length),0,w);
   if(isNew&&g===4){const ex=pool().find(x=>!S.c[x.k]&&!Q.includes(x));if(ex)Q.push(ex)}
@@ -1469,6 +1469,7 @@ function renderHome(){
       <button class="hCard hAct" data-go="shape"><div class="ic">👁</div><b>Luyện mặt chữ</b><span>Chọn đúng chữ giữa các chữ giống nhau</span></button>
       <button class="hCard hAct" data-go="pin"><div class="ic">🔤</div><b>Luyện pinyin</b><span>Nghe & chọn · theo dõi lỗi hay nhầm</span></button>
       <button class="hCard hAct" data-go="listen"><div class="ic">🎧</div><b>Thẻ nghe</b><span>Ôn tập kiểu nghe → nghĩa</span></button>
+      ${window.hskSyncCard?hskSyncCard():''}
       <div class="hCard hBak"><b style="font-family:'Mali',cursive;font-size:18px">💾 Sao lưu tiến độ</b>
         <div class="bkTxt">Chuyển tiến độ ôn tập, lỗi hay nhầm và mẹo của em sang máy / app khác.</div>
         <div class="bkBtns"><button data-bk="copy">📋 Sao chép mã</button>${window.top===window?'<button data-bk="file">⬇️ Tải file</button>':''}<button data-bk="paste">📥 Khôi phục</button></div>
@@ -1743,6 +1744,75 @@ window.qStart=t=>{
 };
 box.style.display='none';
 window.hskDrill=t=>window.qStart(t);
+})();
+
+/* ===== 🔄 Đồng bộ tiến độ qua Google Apps Script của chính người học ===== */
+(()=>{
+const CFG='hskSyncCfg',KEYS=['hskSRS.v1','hskShapeErr','hskPyErr','hskMyTips'];
+const get=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
+const set=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+let cfg=null;try{cfg=JSON.parse(get(CFG)||'null')}catch(e){}
+let last=+(get('hskSyncAt')||0),busy=false,timer=null,status='';
+const J=(s,d)=>{try{return JSON.parse(s)||d}catch(e){return d}};
+function local(){const o={};KEYS.forEach(k=>{const v=get(k);if(v!=null)o[k]=v});return o}
+function merge(loc,rem){
+  const out={...rem,...loc};
+  const a=J(loc['hskSRS.v1'],null),b=J(rem['hskSRS.v1'],null);
+  if(a&&b){
+    const c={...(b.c||{})};for(const k in (a.c||{})){const x=a.c[k],y=c[k];if(!y||(x.t||0)>=(y.t||0))c[k]=x}
+    const log={...(b.log||{})};for(const d in (a.log||{}))log[d]=Math.max(a.log[d],log[d]||0);
+    const nd=a.nd&&b.nd&&a.nd.d===b.nd.d?{...a.nd,n:Math.max(a.nd.n||0,b.nd.n||0)}:(a.nd||b.nd);
+    out['hskSRS.v1']=JSON.stringify({...a,c,log,nd});
+  }else if(b&&!a)out['hskSRS.v1']=rem['hskSRS.v1'];
+  ['hskShapeErr','hskPyErr'].forEach(k=>{const x=J(loc[k],{}),y=J(rem[k],{}),c={...y};for(const i in x)c[i]=Math.max(x[i],c[i]||0);out[k]=JSON.stringify(c)});
+  out.hskMyTips=JSON.stringify({...J(rem.hskMyTips,{}),...J(loc.hskMyTips,{})});
+  return out;
+}
+async function call(body){
+  const r=await fetch(cfg.u,{method:'POST',body:JSON.stringify({...body,key:cfg.k}),headers:{'Content-Type':'text/plain;charset=utf-8'},redirect:'follow'});
+  const j=await r.json();if(!j.ok)throw new Error(j.err||'lỗi');return j;
+}
+async function sync(first){
+  if(!cfg||busy||!navigator.onLine)return;busy=true;setStatus('⏳ Đang đồng bộ…');
+  try{
+    const rem=(await call({action:'get'})).data||{};
+    const loc=local(),m=merge(loc,rem);
+    let changed=false;KEYS.forEach(k=>{if(m[k]!=null&&m[k]!==loc[k]){set(k,m[k]);changed=true}});
+    await call({action:'put',data:m});
+    last=Date.now();set('hskSyncAt',String(last));setStatus('');
+    if(changed&&first&&!sessionStorage.getItem('hskSynced')){sessionStorage.setItem('hskSynced','1');location.reload();return}
+    if(changed&&window.hskSRS)hskSRS.refresh();
+  }catch(e){setStatus('⚠️ Chưa đồng bộ được ('+(e.message||'mất mạng')+'). Sẽ thử lại sau.')}
+  busy=false;
+}
+function setStatus(s){status=s;const el=document.getElementById('syncSt');if(el)el.innerHTML=statusText()}
+function statusText(){
+  if(status)return status;
+  if(!last)return 'Chưa đồng bộ lần nào.';
+  const d=new Date(last);return '✅ Đồng bộ lần cuối: '+d.toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'})+' '+d.toLocaleDateString('vi-VN');
+}
+window.hskSyncSoon=()=>{if(!cfg)return;clearTimeout(timer);timer=setTimeout(()=>sync(false),4000)};
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'&&cfg){clearTimeout(timer);sync(false)}else if(document.visibilityState==='visible'&&cfg&&Date.now()-last>60000)sync(false)});
+window.addEventListener('online',()=>cfg&&sync(false));
+
+/* thẻ trên màn Hôm nay */
+window.hskSyncCard=()=>`<div class="hCard hBak" id="syncCard"><b style="font-family:'Mali',cursive;font-size:18px">🔄 Đồng bộ giữa các máy</b>
+  ${cfg?`<div class="bkTxt" id="syncSt">${statusText()}</div><div class="bkBtns"><button data-sy="now">🔄 Đồng bộ ngay</button><button data-sy="off">Ngắt kết nối</button></div>`
+  :`<div class="bkTxt">Dán <b>mã đồng bộ</b> (bắt đầu bằng HSKSYNC1:) để tiến độ tự đồng bộ giữa điện thoại và máy tính.</div>
+    <div class="bkArea"><textarea id="syIn" rows="2" placeholder="HSKSYNC1:…"></textarea><button data-sy="on">Kết nối</button></div>`}</div>`;
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-sy]');if(!b)return;const a=b.dataset.sy;
+  if(a==='now')sync(false);
+  else if(a==='off'){if(confirm('Ngắt đồng bộ trên máy này? Tiến độ trên máy vẫn giữ nguyên.')){localStorage.removeItem(CFG);cfg=null;window.hskShow&&hskShow('home',null,true)}}
+  else if(a==='on'){
+    const v=(document.getElementById('syIn').value||'').trim();
+    try{if(!v.startsWith('HSKSYNC1:'))throw 0;const c=JSON.parse(atob(v.slice(9)));if(!c.u||!c.k)throw 0;
+      cfg=c;set(CFG,JSON.stringify(c));sessionStorage.removeItem('hskSynced');window.hskShow&&hskShow('home',null,true);sync(true)}
+    catch(x){alert('Mã đồng bộ không hợp lệ.')}
+  }
+});
+if(cfg)setTimeout(()=>sync(true),800);
+{const h=document.getElementById('trang-chu');if(h&&h.classList.contains('show')&&window.hskShow)hskShow('home',null,true)}
 })();
 
 /* ---------- nav highlight ---------- */

@@ -1797,12 +1797,15 @@ window.addEventListener('online',()=>cfg&&sync(false));
 
 /* thẻ trên màn Hôm nay */
 window.hskSyncCard=()=>`<div class="hCard hBak" id="syncCard"><b style="font-family:'Mali',cursive;font-size:18px">🔄 Đồng bộ giữa các máy</b>
-  ${cfg?`<div class="bkTxt" id="syncSt">${statusText()}</div><div class="bkBtns"><button data-sy="now">🔄 Đồng bộ ngay</button><button data-sy="off">Ngắt kết nối</button></div>`
+  ${cfg?`<div class="bkTxt" id="syncSt">${statusText()}</div><div class="bkBtns"><button data-sy="now">🔄 Đồng bộ ngay</button><button data-sy="code">📋 Mã cho máy khác</button><button data-sy="off">Ngắt kết nối</button></div>`
   :`<div class="bkTxt">Dán <b>mã đồng bộ</b> (bắt đầu bằng HSKSYNC1:) để tiến độ tự đồng bộ giữa điện thoại và máy tính.</div>
     <div class="bkArea"><textarea id="syIn" rows="2" placeholder="HSKSYNC1:…"></textarea><button data-sy="on">Kết nối</button></div>`}</div>`;
 document.addEventListener('click',e=>{
   const b=e.target.closest('[data-sy]');if(!b)return;const a=b.dataset.sy;
   if(a==='now')sync(false);
+  else if(a==='code'){const code='HSKSYNC1:'+btoa(JSON.stringify({u:cfg.u,k:cfg.k}));const el=document.getElementById('syncSt');
+    const done=()=>{el.innerHTML='✅ Đã sao chép mã. Trên máy kia: mở app → 🔄 Đồng bộ → dán mã → Kết nối.'};
+    try{navigator.clipboard.writeText(code).then(done,()=>{el.innerHTML='<textarea readonly rows="2" style="width:100%">'+code+'</textarea>'})}catch(x){el.innerHTML='<textarea readonly rows="2" style="width:100%">'+code+'</textarea>'}}
   else if(a==='off'){if(confirm('Ngắt đồng bộ trên máy này? Tiến độ trên máy vẫn giữ nguyên.')){localStorage.removeItem(CFG);cfg=null;window.hskShow&&hskShow('home',null,true)}}
   else if(a==='on'){
     const v=(document.getElementById('syIn').value||'').trim();

@@ -1283,7 +1283,7 @@ function qScore(){
   const n=qItems.length,done=Object.keys(qRes).length,ok=Object.values(qRes).filter(Boolean).length;
   const pct=done?Math.round(ok/done*100):0;
   qzBar.innerHTML=`<span class="qsc">✅ <b>${ok}</b> <span style="color:var(--red)">❌ <b>${done-ok}</b></span> <span class="qtot">${done}/${n}</span></span>
-   <div class="qbtns"><button onclick="qNew()">🔁 Làm lại</button>${done-ok>0?'<button onclick="qWrong()">🎯 Câu sai</button>':''}</div>
+   <div class="qbtns">${done-ok>0?'<button onclick="qWrong()">🎯 Câu sai</button>':''}</div>
    ${done===n&&n?`<div class="qend">${pct>=80?'🏆 Xuất sắc!':pct>=60?'👍 Đạt rồi, cố thêm chút nữa!':'💪 Ôn lại phần ngữ pháp rồi làm lại nhé!'} Điểm: <b>${pct}%</b></div>`:''}`;
 }
 function mark(i,ok,el){qRes[i]=ok;el.classList.add(ok?'qok':'qno');qScore()}
@@ -1387,7 +1387,7 @@ window.qStart=tab=>{
   } else qItems=sh({gram:QG,hard:QH,diff:QD,order:QO,right:QR,write:QW}[tab]).map(x=>Object.assign(x.slice(),{}));
   qRender();if(tab==='order')qItems.forEach((x,i)=>drawO(i));
 };
-window.qNew=()=>{qStart(qTab);window.scrollTo({top:0,behavior:'smooth'})};
+window.qNew=()=>{const h=document.documentElement;h.style.scrollBehavior='auto';const top=()=>{window.scrollTo(0,0);h.scrollTop=0;document.body.scrollTop=0};top();qStart(qTab);requestAnimationFrame(top);setTimeout(()=>{top();h.style.scrollBehavior=''},120)};
 window.qTogAll=()=>{qPyAll=!qPyAll;document.querySelectorAll('#qzBody .qcard').forEach(c=>c.classList.toggle('showpy',qPyAll));qScore()};
 window.qWrong=()=>{
   const keep=qItems.filter((x,i)=>qRes[i]===false).map(x=>Object.assign(Array.isArray(x)?x.slice():{...x},{}));

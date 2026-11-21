@@ -7,8 +7,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Sổ Tay HSK">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="theme-color" content="#2b2b3a">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#fffdf6">
 <link rel="apple-touch-icon" href="icon-180.png">
 
 <title>Sổ Tay Vàng HSK 1·2·3·4</title>
@@ -176,8 +176,8 @@ b,strong{font-weight:800}
 @media(max-width:560px){.mistake{grid-template-columns:1fr}.mistake .why{grid-column:1}}
 /* ---------- vocab ---------- */
 .vbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0;position:sticky;top:0;z-index:5;background:var(--paper);padding:8px 0;border-bottom:2px dashed #e6dfcf}
-.vbar button,.chip{font-family:'Mali',cursive;font-weight:600;font-size:15px;border:2px solid #2b2b3a;background:#fff;border-radius:999px;padding:4px 14px;cursor:pointer}
-.vbar button.on{background:#2b2b3a;color:#fff}
+.vbar button,.chip{font-family:'Mali',cursive;font-weight:600;font-size:15px;border:2px solid var(--ln);background:#fff;border-radius:999px;padding:4px 14px;cursor:pointer}
+.vbar button.on{background:var(--y);color:var(--ink);border-color:#e0b800}
 .vbar input{flex:1;min-width:180px;font:inherit;padding:6px 12px;border-radius:999px;border:2px solid #ccc}
 .vcount{font-size:14px;color:var(--muted)}
 .vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:10px}
@@ -215,7 +215,7 @@ b,strong{font-weight:800}
 .hm .mcell:not(.peek),.hp2 .pcell:not(.peek),.hh .hcell:not(.peek){color:transparent!important;background:#f1ece0;border-radius:6px;cursor:pointer;user-select:none}
 .hm .mcell,.hp2 .pcell,.hh .hcell{cursor:pointer}
 .dnav{display:flex;justify-content:space-between;margin-top:12px}
-.dnav button{font-family:'Mali',cursive;font-weight:600;font-size:16px;border:2px solid #2b2b3a;background:#fff;border-radius:99px;padding:5px 16px;cursor:pointer}
+.dnav button{font-family:'Mali',cursive;font-weight:600;font-size:16px;border:2px solid var(--ln);background:#fff;border-radius:99px;padding:5px 16px;cursor:pointer}
 /* ---------- quiz ---------- */
 .qpy{display:none;font-family:'Be Vietnam Pro',sans-serif;color:#1c7ed6;font-size:13.5px;font-weight:400;line-height:1.35}
 .qcard.showpy .qpy{display:block}
@@ -237,12 +237,12 @@ b,strong{font-weight:800}
 .qpyrow button{font-family:'Mali',cursive;font-weight:600;font-size:15px;border:2px solid #1c7ed6;color:#1c7ed6;background:#fff;border-radius:99px;padding:4px 14px;cursor:pointer}
 .qpyrow button.on{background:#1c7ed6;color:#fff}
 .qtabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px;margin:8px 0 12px}
-.qtabs button{font-family:'Mali',cursive;font-weight:600;font-size:16px;border:2px solid #2b2b3a;background:#fff;border-radius:12px;padding:8px;cursor:pointer;line-height:1.2}
+.qtabs button{font-family:'Mali',cursive;font-weight:600;font-size:16px;border:2px solid var(--ln);background:#fff;border-radius:12px;padding:8px;cursor:pointer;line-height:1.2}
 .qtabs button small{display:block;font-size:12px;opacity:.7}
-.qtabs button.on{background:#2b2b3a;color:#fff}
+.qtabs button.on{background:var(--y);color:var(--ink);border-color:#e0b800}
 .qset{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:#fff8c4;border-radius:10px;padding:10px 12px;margin-bottom:10px;font-size:14.5px}
 .qset select{font:inherit;padding:4px 8px;border-radius:8px;border:2px solid #ddd;color:var(--ink);background:#fff}
-.qset button,.qbtns button{font-family:'Mali',cursive;font-weight:600;font-size:15px;border:2px solid #2b2b3a;background:#fff;border-radius:99px;padding:4px 14px;cursor:pointer}
+.qset button,.qbtns button{font-family:'Mali',cursive;font-weight:600;font-size:15px;border:2px solid var(--ln);background:#fff;border-radius:99px;padding:4px 14px;cursor:pointer}
 .qbar{position:sticky;top:0;z-index:6;background:var(--paper);border-bottom:2px dashed #e6dfcf;padding:8px 0;font-size:15px}
 .qbtns{display:inline-flex;flex-wrap:wrap;gap:8px;margin-left:8px}
 .qend{margin-top:6px;font-family:'Mali',cursive;font-weight:600;font-size:20px;background:#fff8c4;border-radius:10px;padding:6px 12px;display:inline-block}
@@ -256,14 +256,14 @@ b,strong{font-weight:800}
 .qopts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
 .qopts button{text-align:left;font-size:17px;border:2px solid #e6dfcf;background:#fffdf6;border-radius:10px;padding:8px 12px;cursor:pointer}
 .qopts button.big{font-size:24px;text-align:center}
-.qopts button:hover:not(:disabled){border-color:#2b2b3a}
+.qopts button:hover:not(:disabled){border-color:var(--ln)}
 .qopts button.right{background:#d3f9d8;border-color:#2f9e44}
 .qopts button.wrong{background:#ffe3e3;border-color:#e03131;text-decoration:line-through}
 .qopts button:disabled{cursor:default;opacity:1}
 .qexp{font-size:14.5px;margin-top:8px}
 .qhint{font-size:13.5px;color:var(--muted);margin:6px 0}
 .qwrite{display:flex;gap:8px}.qwrite input{font-size:22px;width:90px;text-align:center;border:2px solid #ddd;border-radius:10px;padding:4px;color:var(--ink)}
-.qwrite button{font-family:'Mali',cursive;font-weight:600;border:2px solid #2b2b3a;background:#fff;border-radius:99px;padding:4px 14px;cursor:pointer}
+.qwrite button{font-family:'Mali',cursive;font-weight:600;border:2px solid var(--ln);background:#fff;border-radius:99px;padding:4px 14px;cursor:pointer}
 .qline{min-height:52px;border:2px dashed #ffb547;border-radius:10px;padding:6px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;background:#fffbe6}
 .qtiles{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
 .tile{font-size:19px;border:2px solid #b197fc;background:#f3f0ff;border-radius:10px;padding:5px 12px;cursor:pointer}
@@ -272,15 +272,15 @@ b,strong{font-weight:800}
 .foot{text-align:center;font-family:'Mali',cursive;font-weight:600;color:var(--muted);margin:10px 0 30px}
 /* ---------- SRS ôn tập ---------- */
 .srsStats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:6px 0 12px}
-.srsStats div{background:#fff;border:2px solid #2b2b3a;border-radius:14px;padding:8px 6px;text-align:center;font-size:13px;color:var(--muted);line-height:1.3}
+.srsStats div{background:#fff;border:2px solid var(--ln);border-radius:14px;padding:8px 6px;text-align:center;font-size:13px;color:var(--muted);line-height:1.3}
 .srsStats b{display:block;font-family:'Mali',cursive;font-size:24px;color:var(--ink);line-height:1.25}
 .srsSet{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:14px;margin-bottom:12px}
 .srsSet label{display:flex;align-items:center;gap:5px}
 .srsSet select{font:inherit;font-size:14px;border:2px solid #ddd;border-radius:8px;padding:2px 6px;color:var(--ink);background:#fff}
 .srsLv{display:flex;gap:6px}
-.srsLv button{font-family:'Mali',cursive;font-weight:600;border:2px solid #2b2b3a;background:#fff;border-radius:99px;padding:2px 12px;cursor:pointer;opacity:.4}
+.srsLv button{font-family:'Mali',cursive;font-weight:600;border:2px solid var(--ln);background:#fff;border-radius:99px;padding:2px 12px;cursor:pointer;opacity:.4}
 .srsLv button.on{opacity:1;background:var(--y)}
-.srsCard{background:#fff;border:3px solid #2b2b3a;border-radius:20px;box-shadow:5px 5px 0 #2b2b3a;padding:30px 16px 14px;text-align:center;max-width:560px;margin:0 auto;position:relative}
+.srsCard{background:#fff;border:3px solid var(--ln);border-radius:20px;box-shadow:5px 5px 0 var(--sh);padding:30px 16px 14px;text-align:center;max-width:560px;margin:0 auto;position:relative}
 .srsCard .lvb{position:absolute;top:10px;left:12px;font-size:12px;font-weight:700;padding:1px 9px;border-radius:99px;color:#fff}
 .srsCard .tag{position:absolute;top:10px;right:12px;font-size:12px;color:var(--muted)}
 .srsHz{font-family:var(--zh);font-size:64px;line-height:1.15;margin:10px 0 4px}
@@ -288,11 +288,11 @@ b,strong{font-weight:800}
 .srsPy{font-size:21px;color:#c2255c;font-weight:600;margin-top:6px}
 .srsEx{background:#fffbe6;border:2px dashed #ffb547;border-radius:12px;padding:8px 10px;margin:12px 0 0;text-align:left;font-size:14.5px}
 .srsEx .h{font-family:var(--zh);font-size:18px}
-.srsSpk{border:2px solid #2b2b3a;background:var(--b);border-radius:99px;font-size:17px;padding:3px 14px;cursor:pointer;margin:4px}
+.srsSpk{border:2px solid var(--ln);background:var(--b);border-radius:99px;font-size:17px;padding:3px 14px;cursor:pointer;margin:4px}
 .srsSpk.sm{font-size:13px;padding:0 8px;margin:0 0 0 4px;vertical-align:middle}
-.srsFlip{font-family:'Mali',cursive;font-weight:700;font-size:18px;border:2px solid #2b2b3a;background:var(--y);border-radius:14px;padding:10px;width:100%;margin-top:16px;cursor:pointer}
+.srsFlip{font-family:'Mali',cursive;font-weight:700;font-size:18px;border:2px solid var(--ln);background:var(--y);border-radius:14px;padding:10px;width:100%;margin-top:16px;cursor:pointer}
 .srsG{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:16px}
-.srsG button{font-family:'Mali',cursive;font-weight:700;font-size:15px;border:2px solid #2b2b3a;border-radius:12px;padding:8px 2px;cursor:pointer;line-height:1.2}
+.srsG button{font-family:'Mali',cursive;font-weight:700;font-size:15px;border:2px solid var(--ln);border-radius:12px;padding:8px 2px;cursor:pointer;line-height:1.2}
 .srsG button small{display:block;font-family:'Be Vietnam Pro',sans-serif;font-weight:400;font-size:11.5px;color:#444}
 .srsG .g0{background:#ffc9c9}.srsG .g1{background:#ffd8a8}.srsG .g2{background:#b2f2bb}.srsG .g3{background:#a5d8ff}
 .srsKnow{background:none;border:0;color:var(--muted);text-decoration:underline;font-size:13px;margin-top:10px;cursor:pointer}
@@ -318,19 +318,19 @@ body{padding-left:212px;padding-top:0}
 #mtop,#tabbar{display:none}
 .libbar{display:none;max-width:980px;margin:18px auto -8px;padding:0 12px;gap:8px;flex-wrap:wrap}
 .libbar.on{display:flex}
-.libbar button{font-family:'Mali',cursive;font-weight:600;font-size:15px;border:2px solid #2b2b3a;background:#fff;border-radius:99px;padding:5px 14px;cursor:pointer;white-space:nowrap}
-.libbar button.on{background:#2b2b3a;color:#fff;-webkit-text-fill-color:#fff}
+.libbar button{font-family:'Mali',cursive;font-weight:600;font-size:15px;border:2px solid var(--ln);background:#fff;border-radius:99px;padding:5px 14px;cursor:pointer;white-space:nowrap}
+.libbar button.on{background:var(--y);color:var(--ink);border-color:#e0b800;-webkit-text-fill-color:var(--ink)}
 .lvpick{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.lvpick button{font-family:'Mali',cursive;font-weight:700;font-size:16px;border:2px solid #2b2b3a;background:#fff;border-radius:12px;padding:6px 16px;cursor:pointer}
+.lvpick button{font-family:'Mali',cursive;font-weight:700;font-size:16px;border:2px solid var(--ln);background:#fff;border-radius:12px;padding:6px 16px;cursor:pointer}
 .lvpick button.on{background:var(--c);color:#fff;-webkit-text-fill-color:#fff;border-color:var(--c)}
 /* home */
 .hGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}
-.hCard{background:#fff;border:2px solid #2b2b3a;border-radius:16px;padding:14px;box-shadow:3px 3px 0 #2b2b3a}
+.hCard{background:#fff;border:2px solid var(--ln);border-radius:16px;padding:14px;box-shadow:3px 3px 0 var(--sh)}
 .hHero{grid-column:1/-1;display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:#fffbe6}
 .hHero .fire{font-size:44px;line-height:1}
 .hHero .big{font-family:'Mali',cursive;font-weight:700;font-size:26px;line-height:1.2}
 .hHero .meta{color:var(--muted);font-size:14px}
-.hHero .go{margin-left:auto;font-family:'Mali',cursive;font-weight:700;font-size:18px;border:2px solid #2b2b3a;background:var(--y);border-radius:14px;padding:12px 18px;cursor:pointer}
+.hHero .go{margin-left:auto;font-family:'Mali',cursive;font-weight:700;font-size:18px;border:2px solid var(--ln);background:var(--y);border-radius:14px;padding:12px 18px;cursor:pointer}
 .hAct{cursor:pointer;text-align:left;font:inherit;color:var(--ink)}
 .hAct .ic{font-size:26px}
 .hAct b{display:block;font-family:'Mali',cursive;font-size:18px;margin-top:4px}
@@ -345,10 +345,10 @@ body{padding-left:212px;padding-top:0}
 .week div{flex:1;text-align:center;font-size:11px;color:var(--muted)}
 .week div i{display:block;height:26px;border-radius:8px;background:#eee;margin-bottom:3px}
 .week div i.on{background:#ffb547}
-.week div i.td{outline:2px solid #2b2b3a}
+.week div i.td{outline:2px solid var(--ln)}
 /* grammar */
 .chipbar{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
-.chipbar button{font-family:'Mali',cursive;font-weight:600;font-size:14px;border:2px solid #2b2b3a;background:#fff;border-radius:99px;padding:3px 12px;cursor:pointer}
+.chipbar button{font-family:'Mali',cursive;font-weight:600;font-size:14px;border:2px solid var(--ln);background:#fff;border-radius:99px;padding:3px 12px;cursor:pointer}
 .chipbar button.on{background:var(--y)}
 .gcount{color:var(--muted);font-size:13.5px;margin:4px 0 14px}
 .card.l4 .tag{background:var(--h4)}
@@ -387,16 +387,16 @@ body{padding-left:212px;padding-top:0}
 .drBar{height:7px;background:#eee;border-radius:99px;overflow:hidden;margin:8px 0 12px}.drBar i{display:block;height:100%;background:#20c997;transition:width .3s}
 .drStats{display:flex;gap:6px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin:-4px 0 10px;align-items:center}
 .drStats span{background:#fff0f6;border:1.5px solid #f783ac;color:#c2255c;border-radius:99px;padding:0 8px}
-.drCard{background:#fff;border:3px solid #2b2b3a;border-radius:20px;box-shadow:5px 5px 0 #2b2b3a;padding:18px 16px;max-width:600px;margin:0 auto;text-align:center}
+.drCard{background:#fff;border:3px solid var(--ln);border-radius:20px;box-shadow:5px 5px 0 var(--sh);padding:18px 16px;max-width:600px;margin:0 auto;text-align:center}
 .drQ{font-size:19px;margin-bottom:6px}
 .drHz{font-size:54px;line-height:1.2;margin:6px 0 0}
 .drMean{color:var(--muted);margin-bottom:6px}
 .hide{visibility:hidden}
 .drTools{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:8px 0}
-.drTools button{border:2px solid #2b2b3a;background:var(--b);border-radius:99px;font-size:14px;padding:3px 12px;cursor:pointer}
+.drTools button{border:2px solid var(--ln);background:var(--b);border-radius:99px;font-size:14px;padding:3px 12px;cursor:pointer}
 .drHint{min-height:20px;font-size:14px}
 .drOpts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.drOpts button{border:2.5px solid #2b2b3a;background:#fffdf6;border-radius:14px;padding:12px 6px;cursor:pointer;font-size:22px;font-weight:600}
+.drOpts button{border:2.5px solid var(--ln);background:#fffdf6;border-radius:14px;padding:12px 6px;cursor:pointer;font-size:22px;font-weight:600}
 .drOpts.shape button{font-size:36px;font-weight:400;padding:10px 4px}
 .drOpts button.right{background:#d3f9d8;border-color:#2f9e44}
 .drOpts button.wrong{background:#ffe3e3;border-color:#e03131}
@@ -410,18 +410,18 @@ body{padding-left:212px;padding-top:0}
 .pair em{font-size:11.5px;color:var(--muted)}.pair .vs{font-size:26px;color:var(--muted)}
 .drWord{display:flex;flex-wrap:wrap;gap:4px 12px;justify-content:center;align-items:baseline;background:#fffbe6;border:2px dashed #ffb547;border-radius:12px;padding:8px;margin:8px 0}
 .drWord .zh{font-size:26px}.drWord .py{font-size:18px;font-weight:600}
-.drNext{font-family:'Mali',cursive;font-weight:700;font-size:17px;border:2px solid #2b2b3a;background:var(--y);border-radius:14px;padding:9px;width:100%;margin-top:6px;cursor:pointer}
+.drNext{font-family:'Mali',cursive;font-weight:700;font-size:17px;border:2px solid var(--ln);background:var(--y);border-radius:14px;padding:9px;width:100%;margin-top:6px;cursor:pointer}
 .drEnd .drBig{font-family:'Mali',cursive;font-size:24px;font-weight:700;margin:6px 0 12px}
 .drBtns{display:flex;flex-direction:column;gap:8px}
-.drBtns button{font-family:'Mali',cursive;font-weight:700;font-size:16px;border:2px solid #2b2b3a;background:#fff;border-radius:14px;padding:9px;cursor:pointer}
+.drBtns button{font-family:'Mali',cursive;font-weight:700;font-size:16px;border:2px solid var(--ln);background:#fff;border-radius:14px;padding:9px;cursor:pointer}
 @media(max-width:899px){.drOpts.shape button{font-size:30px}.drHz{font-size:46px}.pair .big{font-size:48px}}
 
 /* ===== mẹo nhớ / bottom sheet ===== */
 #sheet{position:fixed;inset:0;z-index:60;display:none}
 #sheet.on{display:block}
 #sheet .shBg{position:absolute;inset:0;background:rgba(20,20,30,.45)}
-#sheet .shBox{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(640px,100%);max-height:88vh;overflow-y:auto;background:var(--paper);border:3px solid #2b2b3a;border-bottom:0;border-radius:22px 22px 0 0;padding:18px 18px calc(24px + env(safe-area-inset-bottom));box-shadow:0 -8px 30px rgba(0,0,0,.2)}
-@media(min-width:900px){#sheet .shBox{bottom:auto;top:50%;transform:translate(-50%,-50%);border-bottom:3px solid #2b2b3a;border-radius:22px;margin-left:106px}}
+#sheet .shBox{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(640px,100%);max-height:88vh;overflow-y:auto;background:var(--paper);border:3px solid var(--ln);border-bottom:0;border-radius:22px 22px 0 0;padding:18px 18px calc(24px + env(safe-area-inset-bottom));box-shadow:0 -8px 30px rgba(0,0,0,.2)}
+@media(min-width:900px){#sheet .shBox{bottom:auto;top:50%;transform:translate(-50%,-50%);border-bottom:3px solid var(--ln);border-radius:22px;margin-left:106px}}
 .shX{position:absolute;top:10px;right:12px;border:0;background:#eee;border-radius:99px;width:32px;height:32px;font-size:15px;cursor:pointer}
 .shHead{display:flex;gap:16px;align-items:center;padding-right:30px}
 .shHz{font-size:56px;line-height:1.1}
@@ -429,7 +429,7 @@ body{padding-left:212px;padding-top:0}
 .shMn{margin-top:2px}
 .shLv{font-size:11px;background:#2b2b3a;color:#fff;border-radius:6px;padding:0 6px;vertical-align:middle}
 .shH{font-family:'Mali',cursive;font-size:18px;margin:16px 0 6px}
-.tRow{display:flex;gap:12px;background:#fff;border:2px solid #2b2b3a;border-radius:14px;padding:10px;margin-bottom:8px;text-align:left}
+.tRow{display:flex;gap:12px;background:#fff;border:2px solid var(--ln);border-radius:14px;padding:10px;margin-bottom:8px;text-align:left}
 .tChar{display:flex;flex-direction:column;align-items:center;min-width:54px}
 .tChar .zh{font-size:40px;line-height:1.1}
 .tChar small,.tchip small{font-weight:700;color:#7048e8;font-size:11px;letter-spacing:.5px;text-transform:uppercase}
@@ -437,17 +437,17 @@ body{padding-left:212px;padding-top:0}
 .tLine{margin-top:5px;font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px;align-items:center}
 .tchip{display:inline-flex;align-items:baseline;gap:3px;background:#f3f0ff;border-radius:8px;padding:0 6px}
 .tchip b{font-size:17px;color:var(--ink)}
-#myTip{width:100%;font:inherit;font-size:15px;border:2px solid #2b2b3a;border-radius:12px;padding:8px 10px;background:#fffbe6;color:var(--ink);resize:vertical;box-sizing:border-box}
+#myTip{width:100%;font:inherit;font-size:15px;border:2px solid var(--ln);border-radius:12px;padding:8px 10px;background:#fffbe6;color:var(--ink);resize:vertical;box-sizing:border-box}
 .shNote{font-size:12.5px;color:var(--muted);margin-top:4px}
 .srsMy{background:#fffbe6;border:2px dashed #ffb547;border-radius:10px;padding:6px 10px;margin-top:10px;font-size:14px;text-align:left}
-.srsTipBtn,.drTipBtn{border:2px solid #2b2b3a;background:#f3f0ff;border-radius:99px;font-size:14px;padding:4px 14px;margin-top:10px;cursor:pointer}
+.srsTipBtn,.drTipBtn{border:2px solid var(--ln);background:#f3f0ff;border-radius:99px;font-size:14px;padding:4px 14px;margin-top:10px;cursor:pointer}
 .drCmpTips{margin-top:6px}
 .w{cursor:pointer}
 
 .cpy{font-weight:700;font-size:15px;line-height:1.2}.pair .cpy{font-size:20px}.tchip .cpy{font-size:12.5px}
 .hBak{grid-column:1/-1}.bkTxt{font-size:13.5px;color:var(--muted);margin:2px 0 8px}
-.bkBtns{display:flex;gap:8px;flex-wrap:wrap}.bkBtns button,.bkArea button{font-family:'Mali',cursive;font-weight:600;border:2px solid #2b2b3a;background:#fff;border-radius:99px;padding:4px 12px;cursor:pointer}
-.bkArea{margin-top:8px;font-size:13.5px;display:flex;flex-direction:column;gap:6px}.bkArea textarea{width:100%;box-sizing:border-box;font-size:12px;border:2px solid #2b2b3a;border-radius:10px;padding:6px}
+.bkBtns{display:flex;gap:8px;flex-wrap:wrap}.bkBtns button,.bkArea button{font-family:'Mali',cursive;font-weight:600;border:2px solid var(--ln);background:#fff;border-radius:99px;padding:4px 12px;cursor:pointer}
+.bkArea{margin-top:8px;font-size:13.5px;display:flex;flex-direction:column;gap:6px}.bkArea textarea{width:100%;box-sizing:border-box;font-size:12px;border:2px solid var(--ln);border-radius:10px;padding:6px}
 @media(display-mode:standalone){#mtop{padding-top:env(safe-area-inset-top);height:calc(44px + env(safe-area-inset-top))}}
 
 /* ===== v3 fixes ===== */
@@ -477,14 +477,14 @@ details.fold[open]>summary{margin-bottom:8px}
 #setModal{position:fixed;inset:0;z-index:70;display:none}
 #setModal.on{display:block}
 #setModal .smBg{position:absolute;inset:0;background:rgba(20,20,30,.45)}
-#setModal .smBox{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(520px,calc(100% - 24px));max-height:86vh;overflow-y:auto;background:var(--paper);border:3px solid #2b2b3a;border-radius:20px;padding:16px 16px 18px;box-shadow:6px 6px 0 #2b2b3a}
+#setModal .smBox{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(520px,calc(100% - 24px));max-height:86vh;overflow-y:auto;background:var(--paper);border:3px solid var(--ln);border-radius:20px;padding:16px 16px 18px;box-shadow:6px 6px 0 var(--sh)}
 .smX{position:absolute;top:10px;right:12px;border:0;background:#eee;border-radius:99px;width:32px;height:32px;font-size:15px;cursor:pointer}
 .smH{font-family:'Mali',cursive;font-size:22px;margin:0 0 10px}
-.setBox{background:#fff;border:2px solid #2b2b3a;border-radius:14px;padding:12px;margin-bottom:10px}
+.setBox{background:#fff;border:2px solid var(--ln);border-radius:14px;padding:12px;margin-bottom:10px}
 
 
 /* ===== v4: Tổng quan mới ===== */
-.hv2{background:#fff;border:2px solid #2b2b3a;border-radius:18px;padding:14px;box-shadow:3px 3px 0 #2b2b3a}
+.hv2{background:#fff;border:2px solid var(--ln);border-radius:18px;padding:14px;box-shadow:3px 3px 0 var(--sh)}
 .hToday{display:flex;gap:14px;align-items:center}
 .ring{position:relative;width:84px;height:84px;flex:none}
 .ring svg{width:100%;height:100%;transform:rotate(-90deg)}
@@ -500,15 +500,15 @@ details.fold[open]>summary{margin-bottom:8px}
 .week2 div{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;color:var(--muted)}
 .week2 i{width:30px;height:30px;border-radius:50%;background:#f1ece0;display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:700;color:#fff;font-size:14px}
 .week2 .on i{background:#ffb547}
-.week2 .td i{box-shadow:0 0 0 2px #2b2b3a}
+.week2 .td i{box-shadow:0 0 0 2px var(--ln)}
 .week2 .td span{color:var(--ink);font-weight:700}
-.goBtn{width:100%;font-family:'Mali',cursive;font-weight:700;font-size:18px;border:2px solid #2b2b3a;background:var(--y);border-radius:14px;padding:11px;cursor:pointer}
+.goBtn{width:100%;font-family:'Mali',cursive;font-weight:700;font-size:18px;border:2px solid var(--ln);background:var(--y);border-radius:14px;padding:11px;cursor:pointer}
 .hSec{font-family:'Mali',cursive;font-weight:700;font-size:17px;margin:18px 2px 8px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
 .hSec small{font-family:'Be Vietnam Pro',sans-serif;font-weight:400;font-size:12.5px;color:var(--muted)}
 .quick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.quick button{display:flex;flex-direction:column;align-items:center;gap:4px;background:#fff;border:2px solid #2b2b3a;border-radius:14px;padding:10px 2px;font-size:12.5px;font-weight:600;cursor:pointer}
+.quick button{display:flex;flex-direction:column;align-items:center;gap:4px;background:#fff;border:2px solid var(--ln);border-radius:14px;padding:10px 2px;font-size:12.5px;font-weight:600;cursor:pointer}
 .quick button span{font-size:24px}
-.prog2{background:#fff;border:2px solid #2b2b3a;border-radius:14px;padding:10px 12px}
+.prog2{background:#fff;border:2px solid var(--ln);border-radius:14px;padding:10px 12px}
 .pRow{display:flex;align-items:center;gap:10px;margin:7px 0}
 .pLb{width:48px;font-family:'Mali',cursive;font-weight:700;font-size:13.5px;color:var(--c)}
 .pBar{flex:1;height:10px;background:#f1ece0;border-radius:99px;position:relative;overflow:hidden}
@@ -519,14 +519,14 @@ details.fold[open]>summary{margin-bottom:8px}
 @media(max-width:899px){
  #cfTbl,#cfTbl tbody,#cfTbl tr,#cfTbl td{display:block;width:auto!important;border:0}
  #cfTbl tr:first-child{display:none}
- #cfTbl tr{background:#fff;border:2px solid #2b2b3a;border-radius:14px;padding:10px 12px;margin-bottom:10px}
+ #cfTbl tr{background:#fff;border:2px solid var(--ln);border-radius:14px;padding:10px 12px;margin-bottom:10px}
  #cfTbl td{padding:2px 0!important}
  #cfTbl td:last-child{color:var(--muted);font-size:15px;margin-top:4px}
 }
 .cfTip{margin-top:6px;background:#fff9db;border-left:4px solid #ffd43b;border-radius:6px;padding:5px 8px;font-size:13.5px}
 .drLv{display:flex;gap:6px;overflow-x:auto;margin:0 0 8px;scrollbar-width:none}
-.drLv button{flex:none;border:2px solid #2b2b3a;background:#fff;border-radius:99px;padding:2px 12px;font-size:13px;font-weight:600;cursor:pointer}
-.drLv button.on{background:#2b2b3a;color:#fff;-webkit-text-fill-color:#fff}
+.drLv button{flex:none;border:2px solid var(--ln);background:#fff;border-radius:99px;padding:2px 12px;font-size:13px;font-weight:600;cursor:pointer}
+.drLv button.on{background:var(--y);color:var(--ink);border-color:#e0b800;-webkit-text-fill-color:var(--ink)}
 .qbar{display:flex;align-items:center;justify-content:space-between;gap:6px 8px;flex-wrap:wrap}.qend{flex-basis:100%}
 .qsc{white-space:nowrap;font-size:15px;display:inline-flex;gap:8px;align-items:center}.qsc .qtot{color:var(--muted);font-weight:600}
 .qbtns{margin-left:0;flex-wrap:nowrap}.qbtns button{white-space:nowrap}
@@ -550,7 +550,7 @@ details.fold[open]>summary{margin-bottom:8px}
 .quick button span{font-size:0;line-height:0}.quick button span .ico{width:30px;height:30px}
 .goBtn{display:flex;align-items:center;justify-content:center;gap:8px}.goBtn .ico{width:24px;height:24px;--ac:#fff}
 .smH{display:flex;align-items:center;gap:8px}
-.seg{display:flex;background:#fff;border:2px solid #2b2b3a;border-radius:12px;padding:3px;gap:3px;margin:4px 0 10px}
+.seg{display:flex;background:#fff;border:2px solid var(--ln);border-radius:12px;padding:3px;gap:3px;margin:4px 0 10px}
 .seg button{flex:1;border:0;background:none;border-radius:9px;padding:7px 0;font-family:'Mali',cursive;font-weight:700;font-size:15px;color:var(--c);-webkit-text-fill-color:var(--c);cursor:pointer}
 .seg button.on{background:var(--c);color:#fff;-webkit-text-fill-color:#fff}
 #gGrp{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-top:0}#gGrp::-webkit-scrollbar{display:none}#gGrp button{flex:none}
@@ -582,7 +582,36 @@ body{min-height:100vh;min-height:100dvh}
 .qsetF{margin:8px 0 4px}.qsetF summary{font-size:14px;color:var(--ink)}
 .qset2{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:6px}
 .qset2 select{font:inherit;font-size:13.5px;border:2px solid #e4dccb;border-radius:9px;padding:5px 4px;background:#fffdf6;color:var(--ink);min-width:0}
-.qNewBtn{display:block;width:100%;margin:6px 0 10px;font-family:'Mali',cursive;font-weight:700;font-size:18px;border:2px solid #2b2b3a;background:var(--y);border-radius:14px;padding:12px;cursor:pointer;box-shadow:3px 3px 0 #2b2b3a}
+.qNewBtn{display:block;width:100%;margin:6px 0 10px;font-family:'Mali',cursive;font-weight:700;font-size:18px;border:2px solid var(--ln);background:var(--y);border-radius:14px;padding:12px;cursor:pointer;box-shadow:3px 3px 0 var(--sh)}
+
+/* ===== v12: viền mềm + header/tab sáng + icon + hiệu ứng ===== */
+:root{--ln:#cdbb9f;--sh:#efe1c6}
+html{background:#fffdf6}
+#mtop{background:#fffdf6;color:var(--ink);border-bottom:1.5px solid #eee3cf;--ac:#fff07a}
+#mtop button{background:#f6efe0;color:var(--ink);-webkit-text-fill-color:var(--ink)}
+#mtop input{background:#fff;border:1.5px solid #e6dac3}
+#tabbar{background:#fffdf6;border-top:1.5px solid #eee3cf;box-shadow:0 -6px 18px rgba(120,90,40,.07);--ac:#f6efe0}
+#tabbar button{color:#a5967f;-webkit-text-fill-color:#a5967f;transition:color .2s}
+#tabbar button.on{background:var(--y);color:var(--ink);-webkit-text-fill-color:var(--ink);--ac:#fff}
+#tabbar button.on .ic{animation:hop .6s cubic-bezier(.3,1.5,.5,1)}
+@keyframes hop{0%{transform:none}25%{transform:translateY(-8px) scale(1.15) rotate(-8deg)}50%{transform:translateY(0) scale(.92,1.06)}70%{transform:translateY(-3px) rotate(4deg)}100%{transform:none}}
+.tbl th{background:#f6efe0;color:var(--ink)}
+.shLv{background:#8a7764}
+.ei{display:inline-block;width:1.2em;height:1.2em;vertical-align:-.22em;flex:none;stroke-width:1.9}
+.ei+*,.ei{margin-right:.12em}
+.lvdot{display:inline-block;width:.62em;height:.62em;border-radius:50%;background:var(--c);border:1.5px solid rgba(0,0,0,.15);vertical-align:.05em;margin-right:.2em}
+.tip:before,.warn:before,.dayHead p:before{content:"";display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:5px;background:no-repeat center/contain}
+.tip:before,.dayHead p:before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232b2b3a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 17.5h6M10 20.5h4'/%3E%3Cpath d='M12 3.5a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V17h5v-.6c0-.8.4-1.5 1-2A6 6 0 0 0 12 3.5z' fill='%23fff07a'/%3E%3C/svg%3E")}
+.warn:before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232b2b3a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 4l9 15.5H3z' fill='%23ffc9c9'/%3E%3Cpath d='M12 10v4.5M12 17.3v.2'/%3E%3C/svg%3E")}
+/* đúng → nảy + pháo giấy */
+.pop{animation:pop .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{0%{transform:scale(1)}35%{transform:scale(1.1) rotate(-1.5deg)}65%{transform:scale(.97)}100%{transform:scale(1)}}
+.cf{position:fixed;width:8px;height:8px;border-radius:2px;pointer-events:none;z-index:999;animation:cf .8s ease-out forwards}
+@keyframes cf{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(var(--dx),var(--dy)) rotate(var(--r));opacity:0}}
+.cheer{position:fixed;z-index:999;pointer-events:none;font-family:'Mali',cursive;font-weight:700;font-size:17px;color:#2f9e44;background:#fff;border:2px solid #b2f2bb;border-radius:99px;padding:3px 12px;white-space:nowrap;box-shadow:0 4px 12px rgba(47,158,68,.18);animation:cheer 1.1s ease-out forwards}
+.cheer.big{color:#e8590c;border-color:#ffd8a8;font-size:19px}
+@keyframes cheer{0%{transform:translate(-50%,6px) scale(.8);opacity:0}18%{transform:translate(-50%,-8px) scale(1.08);opacity:1}70%{opacity:1}100%{transform:translate(-50%,-34px) scale(1);opacity:0}}
+@media (prefers-reduced-motion:reduce){#tabbar button.on .ic,.pop,.cf,.cheer{animation-duration:.01s}}
 </style>
 </head>
 <body>
@@ -1286,7 +1315,7 @@ function qScore(){
    <div class="qbtns">${done-ok>0?'<button onclick="qWrong()">🎯 Câu sai</button>':''}</div>
    ${done===n&&n?`<div class="qend">${pct>=80?'🏆 Xuất sắc!':pct>=60?'👍 Đạt rồi, cố thêm chút nữa!':'💪 Ôn lại phần ngữ pháp rồi làm lại nhé!'} Điểm: <b>${pct}%</b></div>`:''}`;
 }
-function mark(i,ok,el){qRes[i]=ok;el.classList.add(ok?'qok':'qno');qScore()}
+function mark(i,ok,el){qRes[i]=ok;el.classList.add(ok?'qok':'qno');qScore();if(window.hskCheer){const b=el.querySelector('.qopts button.right')||el.querySelector('.qline')||el.querySelector('.qexp');hskCheer(ok?b:null,ok)}}
 function qRender(){setTimeout(()=>{document.querySelectorAll('#qzBody .qopts').forEach(o=>{if([...o.children].some(b=>b.textContent.trim().length>14))o.classList.add('long')});if(qItems.length)qzBody.insertAdjacentHTML('beforeend',`<button class="qNewBtn" onclick="qNew()">${qTab==='vocab'?'🎲 Tạo đề mới':'🔁 Làm lại đề này (xáo câu)'}</button>`)},0);
   qRes={};
   const R={hard:rGram,diff:rGram,gram:rGram,order:rOrder,right:rRight,write:rWrite,vocab:rVocab}[qTab];
@@ -1805,7 +1834,7 @@ function shapeAns(i){
   if(D.ans)return;D.ans=true;const w=D.cur,ch=D.opts[i],ok=ch===w.w;
   D.done++;if(ok)D.ok++;
   const err=load(SE,{});if(ok){if(err[w.id]){err[w.id]--;if(err[w.id]<=0)delete err[w.id]}}else err[w.id]=(err[w.id]||0)+2;store(SE,err);
-  box.querySelectorAll('.drOpts button').forEach((b,k)=>{b.disabled=true;if(D.opts[k]===w.w)b.classList.add('right');else if(k==i)b.classList.add('wrong')});
+  box.querySelectorAll('.drOpts button').forEach((b,k)=>{b.disabled=true;if(D.opts[k]===w.w)b.classList.add('right');else if(k==i)b.classList.add('wrong')});window.hskCheer&&hskCheer(ok?box.querySelector('.drOpts button.right'):null,ok);
   const cmp=ok?'':`<div class="drCmp">${[...w.w].map((c,k)=>{const x=[...ch][k];return x===c?'':
      `<div class="pair"><div><span class="zh big good">${c}</span><span class="cpy">${cpyHTML(c)}</span><small>${HV[c]||''}</small><em>đúng</em></div><div class="vs">≠</div><div><span class="zh big bad">${x}</span><span class="cpy">${cpyHTML(x)}</span><small>${HV[x]||''}</small><em>em chọn</em></div></div><div class="drCmpTips">${window.hskCharTip?hskCharTip(c)+hskCharTip(x):''}</div>`}).join('')}</div>`;
   $('drExp').innerHTML=`<div class="drRes ${ok?'ok':'no'}">${ok?'✅ Chính xác!':'❌ Chưa đúng — nhìn kỹ chỗ khác nhau:'}</div>${cmp}
@@ -1863,7 +1892,7 @@ function pinQ(){
    (top.length?`<div class="drStats">Hay nhầm: ${top.map(t=>`<span>${t[0]} <b>${t[1]}</b></span>`).join('')}</div>`:'')+
    `<div class="drCard"><div class="drQ">Nghe rồi chọn pinyin đúng</div>
     <div class="drHz zh ${D.listen?'hide':''}" id="drHz">${w.w}</div><div class="drMean ${D.listen?'hide':''}">${w.m}</div>
-    <div class="drTools"><button data-act="say">🔊 Nghe lại</button><button data-act="slow">🐢 Nghe chậm</button></div>
+    <div class="drTools"><button data-act="say">🔊 Nghe lại</button></div>
     <div class="drOpts pin">${D.opts.map((o,i)=>`<button data-o="${i}">${colorPy(o.str)}</button>`).join('')}</div>
     <div id="drExp"></div></div>`;
   setScore();say(w.w);
@@ -1872,7 +1901,7 @@ function pinAns(i){
   if(D.ans)return;D.ans=true;const w=D.cur,o=D.opts[i],ok=!o.key;
   D.done++;if(ok)D.ok++;
   const err=load(PE,{});if(!ok)err[o.key]=(err[o.key]||0)+1;store(PE,err);
-  box.querySelectorAll('.drOpts button').forEach((b,k)=>{b.disabled=true;if(!D.opts[k].key)b.classList.add('right');else if(k==i)b.classList.add('wrong')});
+  box.querySelectorAll('.drOpts button').forEach((b,k)=>{b.disabled=true;if(!D.opts[k].key)b.classList.add('right');else if(k==i)b.classList.add('wrong')});window.hskCheer&&hskCheer(ok?box.querySelector('.drOpts button.right'):null,ok);
   box.querySelectorAll('.hide').forEach(e=>e.classList.remove('hide'));
   $('drExp').innerHTML=`<div class="drRes ${ok?'ok':'no'}">${ok?'✅ Chính xác!':'❌ '+o.label.replace(/^./,c=>c.toUpperCase())}</div>
     <div class="drWord"><span class="zh">${w.w}</span><span class="py">${colorPy(w.p)}</span><span class="hv">${hvOf(w.w)}</span><span>${w.m}</span></div>
@@ -1887,7 +1916,6 @@ box.addEventListener('click',e=>{
   if(b.dataset.dl){try{localStorage.setItem('hskDrLv',b.dataset.dl)}catch(x){}D&&D.kind==='pin'?pinStart('lv',D.listen):shapeStart('lv');return}
   const a=b.dataset.act;
   if(a==='say')say(D.cur.w);
-  else if(a==='slow'){const u=window.speechSynthesis;if(u){try{const r=new SpeechSynthesisUtterance(D.cur.w);r.lang='zh-CN';r.rate=0.5;u.cancel();u.speak(r)}catch(x){}}}
   else if(a==='hint'){$('drHint').innerHTML=`Hán Việt: <b class="hv">${hvOf(D.cur.w)}</b>`}
   else if(a==='tip'){window.hskTip&&hskTip(D.cur.w)}
   else if(a==='next'){D.i++;D.kind==='shape'?shapeQ():pinQ()}
@@ -2053,6 +2081,90 @@ document.getElementById('menuBtn').onclick=()=>document.body.classList.toggle('m
 document.getElementById('scrim').onclick=()=>document.body.classList.remove('menu');
 links.forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('menu')));
 </script>
-<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(function(r){r.update()}).catch(function(){})})}</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(function(r){r.update()}).catch(function(){})})}
+/* ===== v12: thay emoji bằng icon vẽ tay + cổ vũ khi đúng ===== */
+(()=>{
+const s=b=>`<svg class="ei" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${b}</svg>`;
+const A='fill="var(--ac,#fff07a)"';
+const ic={
+spk:s(`<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" ${A}/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/>`),
+mute:s(`<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" ${A}/><path d="M16 9.5l5 5M21 9.5l-5 5"/>`),
+bulb:s(`<path d="M9 17.5h6M10 20.5h4"/><path d="M12 3.5a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V17h5v-.6c0-.8.4-1.5 1-2A6 6 0 0 0 12 3.5z" ${A}/>`),
+eye:s(`<path d="M3 12s3.3-6 9-6 9 6 9 6-3.3 6-9 6-9-6-9-6z" ${A}/><circle cx="12" cy="12" r="2.6"/>`),
+eyeoff:s(`<path d="M3 12s3.3-6 9-6 9 6 9 6-3.3 6-9 6-9-6-9-6z" ${A}/><circle cx="12" cy="12" r="2.6"/><path d="M4.5 4.5l15 15"/>`),
+shuf:s(`<path d="M3.5 7h3.5c4 0 6 10 10 10h3.5M3.5 17h3.5c1.6 0 2.8-1.6 3.8-3.6M13.2 9.6C14.2 8.2 15.4 7 17 7h3.5"/><path d="M18 4.5L20.5 7 18 9.5M18 14.5l2.5 2.5-2.5 2.5"/>`),
+again:s(`<path d="M19.5 11A7.5 7.5 0 0 0 6 7M4.5 13A7.5 7.5 0 0 0 18 17"/><path d="M6 3.5V7h3.5M18 20.5V17h-3.5"/>`),
+dice:s(`<rect x="4" y="4" width="16" height="16" rx="4" ${A}/><g fill="currentColor" stroke="none"><circle cx="8.5" cy="8.5" r="1.3"/><circle cx="15.5" cy="15.5" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="15.5" cy="8.5" r="1.3"/><circle cx="8.5" cy="15.5" r="1.3"/></g>`),
+target:s(`<circle cx="12" cy="12" r="8.5" ${A}/><circle cx="12" cy="12" r="4.8"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/>`),
+ok:s(`<circle cx="12" cy="12" r="9" fill="#d3f9d8" stroke="#2f9e44"/><path d="M8 12.3l2.7 2.7L16.2 9.4" stroke="#2f9e44" stroke-width="2.3"/>`),
+no:s(`<circle cx="12" cy="12" r="9" fill="#ffe3e3" stroke="#e03131"/><path d="M9.2 9.2l5.6 5.6M14.8 9.2l-5.6 5.6" stroke="#e03131" stroke-width="2.3"/>`),
+spark:s(`<path d="M10 3.5l1.6 4.9 4.9 1.6-4.9 1.6L10 16.5l-1.6-4.9L3.5 10l4.9-1.6z" ${A}/><path d="M18 14l.8 2.2 2.2.8-2.2.8L18 20l-.8-2.2-2.2-.8 2.2-.8z"/>`),
+party:s(`<path d="M4 20.5l4-12 8 8z" ${A}/><path d="M13 5.5c.5-1 1.5-1.5 2.5-1M18.5 10.5c1-.5 2-.3 2.5.2M15.5 8.5l3-3M11 3.5v1M20.5 13.5h-1"/>`),
+trophy:s(`<path d="M7.5 4h9v5a4.5 4.5 0 0 1-9 0z" ${A}/><path d="M7.5 6H4.5a3 3 0 0 0 3 4M16.5 6h3a3 3 0 0 1-3 4M12 13.5v3M8.5 20h7l-.8-3.5H9.3z"/>`),
+fire:s(`<path d="M12 20.5c-3.6 0-6-2.4-6-5.6 0-3.8 3.5-5.4 3.5-9.4 2.6 1.2 4 3.3 4.2 5.4.8-.5 1.4-1.4 1.6-2.4 1.6 1.4 2.7 3.6 2.7 6.4 0 3.2-2.4 5.6-6 5.6z" fill="#ffd8a8" stroke="#e8590c"/><path d="M12 20.5c-1.5 0-2.5-1-2.5-2.4 0-1.6 1.5-2.4 2.5-3.8 1 1.4 2.5 2.2 2.5 3.8 0 1.4-1 2.4-2.5 2.4z" fill="#fff07a" stroke="#e8590c"/>`),
+sprout:s(`<path d="M12 20.5v-8"/><path d="M12 12.5C12 8.5 9 6 4.5 6c0 4 3 6.5 7.5 6.5z" fill="#b8f0c8"/><path d="M12 10.5c0-3.5 2.5-6 7.5-6 0 4-2.5 6-7.5 6z" fill="#b8f0c8"/>`),
+warn:s(`<path d="M12 4l9 15.5H3z" fill="#ffc9c9"/><path d="M12 10v4.5M12 17.3v.2"/>`),
+copy:s(`<rect x="8" y="7" width="11.5" height="13.5" rx="2.5" ${A}/><path d="M5.5 16.5V5.5a2 2 0 0 1 2-2h8"/>`),
+down:s(`<path d="M12 4v11M7.5 10.5L12 15l4.5-4.5"/><path d="M4.5 15.5v3a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3"/>`),
+save:s(`<path d="M5 4h11.5L20 7.5V20H4V5z" ${A}/><path d="M8 4v4.5h7V4M7.5 20v-6h9v6"/>`),
+plus:s(`<circle cx="12" cy="12" r="8.5" ${A}/><path d="M12 8v8M8 12h8"/>`),
+arrow:s(`<path d="M4.5 12h14M13.5 7l5 5-5 5"/>`),
+people:s(`<circle cx="8.5" cy="8" r="3" ${A}/><circle cx="16.5" cy="9" r="2.5"/><path d="M3.5 19.5c0-3 2.2-5 5-5s5 2 5 5M14 14.5c3 0 6 1.5 6.5 5"/>`),
+heart:s(`<path d="M12 19.5S4 15 4 9.5A4 4 0 0 1 12 8a4 4 0 0 1 8 1.5c0 5.5-8 10-8 10z" fill="#ffc2dd"/>`),
+star:s(`<path d="M12 3.8l2.5 5.2 5.6.7-4.1 3.9 1 5.6-5-2.8-5 2.8 1-5.6-4.1-3.9 5.6-.7z" ${A}/>`),
+key:s(`<rect x="3" y="6.5" width="18" height="11" rx="2.5" ${A}/><path d="M7 10h.01M10 10h.01M13 10h.01M16 10h.01M8 14h8"/>`),
+check:s(`<path d="M5 12.5l4.5 4.5L19 7.5"/>`)};
+const I=window.ICO||{};const big=k=>(I[k]||'').replace('class="ico"','class="ei"');
+const dot=n=>`<i class="lvdot" style="--c:var(--h${n})"></i>`;
+const M={'🔊':ic.spk,'🔇':ic.mute,'💡':ic.bulb,'👀':ic.eye,'🙈':ic.eyeoff,'🔀':ic.shuf,'🔁':ic.again,'🔄':big('sync'),'🎲':ic.dice,'🎯':ic.target,
+'✅':ic.ok,'❌':ic.no,'✨':ic.spark,'🎉':ic.party,'🏆':ic.trophy,'🏅':ic.star,'👍':ic.star,'⭐':ic.star,'💪':ic.fire,'🔥':ic.fire,'🌱':ic.sprout,
+'⚠':ic.warn,'📋':ic.copy,'📥':ic.down,'⬇':ic.down,'💾':ic.save,'➕':ic.plus,'👉':ic.arrow,'👪':ic.people,'💌':ic.heart,'❤':ic.heart,'⌨':ic.key,'👌':ic.check,
+'📖':big('lib'),'📒':big('lib'),'📚':big('vocab'),'🔤':big('pin'),'👁':big('shape'),'🎧':big('listen'),'📝':big('gram'),'🧱':big('gram'),'⚖':big('diff'),
+'🧩':big('order'),'✍':big('write'),'🔍':big('search'),'⚙':big('gear'),'🧠':big('srs'),'📦':big('mw'),'🎵':big('tone'),'📅':big('home'),
+'🌸':dot(1),'🍊':dot(2),'💜':dot(3),'🍀':dot(4)};
+const keys=Object.keys(M).sort((a,b)=>b.length-a.length).map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));
+const RE=new RegExp('('+keys.join('|')+')\\uFE0F?','gu'),TEST=new RegExp(keys.join('|'),'u');
+const SKIP=/^(SCRIPT|STYLE|TEXTAREA|OPTION|INPUT|TITLE|SVG)$/;
+const strip=x=>x.replace(RE,'').replace(/^\s+/,'');
+function fix(root){
+  if(!root)return;
+  if(root.nodeType===3){conv(root);return}
+  if(root.nodeType!==1)return;
+  if(root.tagName==='OPTION'){if(TEST.test(root.textContent))root.textContent=strip(root.textContent);return}
+  root.querySelectorAll&&root.querySelectorAll('option').forEach(o=>{if(TEST.test(o.textContent))o.textContent=strip(o.textContent)});
+  root.querySelectorAll&&root.querySelectorAll('[placeholder]').forEach(o=>{if(TEST.test(o.placeholder))o.placeholder=strip(o.placeholder)});
+  if(SKIP.test(root.tagName))return;
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentElement;return p&&!SKIP.test(p.tagName)&&!p.closest('svg')&&TEST.test(n.nodeValue)?1:2}});
+  const L=[];let n;while(n=w.nextNode())L.push(n);L.forEach(conv);
+}
+function conv(n){
+  const v=n.nodeValue;if(!TEST.test(v))return;const p=n.parentElement;if(!p||SKIP.test(p.tagName))return;
+  const sp=document.createElement('span');sp.innerHTML=v.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])).replace(RE,(m,k)=>M[k]);
+  const f=document.createDocumentFragment();while(sp.firstChild)f.appendChild(sp.firstChild);n.replaceWith(f);
+}
+window.hskDeEmoji=fix;
+fix(document.body);
+new MutationObserver(ms=>{for(const m of ms){if(m.type==='characterData')conv(m.target);else m.addedNodes.forEach(fix)}}).observe(document.body,{childList:true,subtree:true,characterData:true});
+
+/* cổ vũ khi trả lời đúng */
+const PR=['Giỏi quá!','Chuẩn luôn!','Đúng rồi!','Tuyệt!','Xịn ghê!','Nhớ tốt đó!','Quá đỉnh!'];
+const COL=['#fff07a','#ffc2dd','#b8f0c8','#bfe3ff','#ffd8a8','#d0bfff'];
+let streak=0;
+window.hskCheer=(el,ok)=>{
+  if(!ok){streak=0;return}
+  streak++;if(!el)return;
+  el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop');
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const r=el.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+  for(let k=0;k<14;k++){const d=document.createElement('i');d.className='cf';const a=Math.PI*2*k/14+Math.random()*.4,R=50+Math.random()*45;
+    d.style.cssText=`left:${cx}px;top:${cy}px;background:${COL[k%COL.length]};--dx:${Math.cos(a)*R}px;--dy:${Math.sin(a)*R-20}px;--r:${Math.random()*360}deg;${k%3?'':'border-radius:50%'}`;
+    document.body.appendChild(d);setTimeout(()=>d.remove(),850)}
+  const c=document.createElement('div');const combo=streak>=3;
+  c.className='cheer'+(combo&&streak%5===0?' big':'');
+  c.innerHTML=combo?`${ic.fire} ${streak} câu liên tiếp!`:PR[Math.random()*PR.length|0];
+  c.style.left=cx+'px';c.style.top=(r.top-34)+'px';document.body.appendChild(c);setTimeout(()=>c.remove(),1150);
+};
+})();
+</script>
 </body>
 </html>

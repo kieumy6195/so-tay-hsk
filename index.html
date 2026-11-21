@@ -632,6 +632,32 @@ html{background:#fffdf6}
 .srsPeekW{display:none;font-family:var(--zh);font-size:40px;opacity:.35;margin-top:2px}
 .srsCard.peek .srsPeekW{display:block}
 @media (prefers-reduced-motion:reduce){.srsCard.flipIn,.srsCard.dealIn,.wv i{animation:none}}
+
+/* ===== v14: Từ của ngày ===== */
+#wotdBox{perspective:1100px;margin-top:14px}
+.wd{position:relative;background:#fff;border:2px solid var(--ln);border-radius:18px;box-shadow:3px 3px 0 var(--sh);padding:12px 14px 14px;cursor:pointer;overflow:hidden;-webkit-tap-highlight-color:transparent}
+.wd:before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:repeating-linear-gradient(90deg,var(--p) 0 14px,var(--y) 14px 28px,var(--g) 28px 42px,var(--b) 42px 56px)}
+.wd.flipOut{animation:flipOut .18s ease-in forwards}.wd.flipIn{animation:flipIn .32s cubic-bezier(.2,1.3,.5,1)}
+.wdTop{display:flex;align-items:center;gap:6px;font-family:'Mali',cursive;font-weight:700;font-size:14px;margin-top:4px}
+.wdTop .d{margin-left:auto;font-size:12px;font-weight:600;color:var(--muted);background:#f6efe0;border-radius:99px;padding:1px 9px}
+.wdFront{text-align:center;padding:6px 0 2px}
+.wdHz{font-family:var(--zh);font-size:60px;line-height:1.15;margin:4px 0 0}
+.wdPy{font-size:20px;font-weight:600}
+.wdHv{font-size:12px;letter-spacing:.08em;color:#7048e8;font-weight:700;text-transform:uppercase;margin-top:2px}
+.wdHint{font-size:12px;color:var(--muted);margin-top:8px}
+.wdBack{font-size:14.5px;line-height:1.5}
+.wdBack .wdHead{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:6px 0 2px}
+.wdBack .wdHead .zh{font-family:var(--zh);font-size:34px}
+.wdBack .wdM{font-weight:700;font-size:17px}
+.wdBlk{margin-top:9px;padding:8px 10px;border-radius:12px;background:#fffbe6}
+.wdBlk.ex{background:#f1f8ff}.wdBlk.fact{background:#f3f0ff}
+.wdBlk h5{margin:0 0 3px;font-family:'Mali',cursive;font-size:13px;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:4px}
+.wdBlk .zh{font-family:var(--zh);font-size:19px}
+.wdTip{display:flex;gap:8px;align-items:baseline}.wdTip b{font-family:var(--zh);font-size:19px;font-weight:400;flex:none}
+.wdBtns{display:flex;gap:8px;margin-top:10px}
+.wdBtns button{flex:1;font-family:'Mali',cursive;font-weight:700;font-size:14px;border:2px solid var(--ln);background:#fff;border-radius:12px;padding:7px 4px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px}
+.wdBtns button.y{background:var(--y);border-color:#e0b800}
+.wdSpk{border:0;background:var(--b);border-radius:99px;padding:2px 9px;margin-left:4px;cursor:pointer;vertical-align:middle}
 </style>
 </head>
 <body>
@@ -1707,6 +1733,7 @@ function renderHome(){
     <div class="week2">${days.map(d=>{const k=dkey(d),on=I.log[k],td=k===dkey(new Date());return `<div class="${on?'on':''} ${td?'td':''}"><i>${on?'✓':''}</i><span>${W[d.getDay()]}</span></div>`}).join('')}</div>
     <button class="goBtn" data-go="srs">${ICO.srs} ${todo?'Ôn tập ngay':'Ôn thêm'}</button>
   </div>
+  <div id="wotdBox"></div>
   <div class="hSec">Luyện nhanh</div>
   <div class="quick">
     <button data-go="shape"><span>${ICO.shape}</span>Mặt chữ</button>
@@ -1719,6 +1746,7 @@ function renderHome(){
     return `<div class="pRow"><span class="pLb" style="--c:${LVC[l]}">HSK${l}</span><span class="pBar"><i class="a" style="width:${pc}%;background:${LVC[l]}"></i><i class="b" style="width:${ps}%;background:${LVC[l]}"></i></span><span class="pN">${p.l}<small>/${p.t}</small></span></div>`}).join('')}
     <div class="pKey"><i class="k1"></i>đã học <i class="k2"></i>thuộc chắc</div>
   </div>`;
+  window.hskWotd&&hskWotd();
 }
 $('homeBox').addEventListener('click',e=>{
   const g=e.target.closest('[data-go]');if(!g)return;const k=g.dataset.go;
@@ -2185,6 +2213,46 @@ window.hskCheer=(el,ok)=>{
   c.innerHTML=combo?`${ic.fire} ${streak} câu liên tiếp!`:PR[Math.random()*PR.length|0];
   c.style.left=cx+'px';c.style.top=(r.top-34)+'px';document.body.appendChild(c);setTimeout(()=>c.remove(),1150);
 };
+})();
+
+/* ===== Từ của ngày ===== */
+(()=>{
+let D=null,flip=false,loading=false;
+const dk=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+function pick(){const s=D.start.split('-').map(Number),a=new Date(s[0],s[1]-1,s[2]),n=new Date();n.setHours(0,0,0,0);
+  const days=Math.round((n-a)/864e5),N=D.words.length;return D.words[((days%N)+N)%N]}
+const spk=x=>`<button class="wdSpk" data-wsay="${x}" aria-label="Nghe">🔊</button>`;
+function html(){
+  const w=pick(),n=new Date(),dd=`${n.getDate()}/${n.getMonth()+1}`;
+  const top=`<div class="wdTop">${ICO.vocab.replace('class="ico"','class="ei"')} Từ của ngày<span class="d">${dd}</span></div>`;
+  if(!flip)return `<div class="wd" data-wflip="1">${top}<div class="wdFront"><div class="wdHz">${w.w}</div><div class="wdPy">${colorPy(w.p)}</div><div class="wdHv">${w.hv}</div><div class="wdHint">Chạm để lật thẻ</div></div></div>`;
+  return `<div class="wd">${top}<div class="wdBack">
+    <div class="wdHead"><span class="zh">${w.w}</span><span>${colorPy(w.p)}</span>${spk(w.w)}</div>
+    <div class="wdM">${w.m}</div><div class="hv">${w.hv}</div>
+    <div class="wdBlk ex"><h5>📖 Ví dụ</h5><div class="zh">${w.e}${spk(w.e)}</div><div>${colorPy(w.ep)}</div><div style="color:var(--muted)">${w.ev}</div></div>
+    ${w.t.length?`<div class="wdBlk"><h5>💡 Mẹo nhớ</h5>${w.t.map(x=>`<div class="wdTip"><b>${x[0]}</b><span>${x[1]}</span></div>`).join('')}</div>`:''}
+    <div class="wdBlk fact"><h5>✨ Bạn có biết?</h5>${w.f}</div>
+    <div class="wdBtns"><button data-wflip="1">🔁 Lật lại</button><button class="y" data-wtip="${w.w}">✍️ Mẹo đầy đủ</button></div>
+  </div></div>`;
+}
+function render(anim){const box=document.getElementById('wotdBox');if(!box)return;
+  if(!D){if(!loading){loading=true;fetch('wotd.json').then(r=>r.json()).then(j=>{D=j;render()}).catch(()=>{loading=false})}return}
+  box.innerHTML=html();if(anim)box.firstElementChild.classList.add('flipIn')}
+window.hskWotd=()=>render();
+document.addEventListener('click',e=>{
+  const box=document.getElementById('wotdBox');if(!box||!box.contains(e.target))return;
+  const s=e.target.closest('[data-wsay]');if(s){window.hskSay&&hskSay(s.dataset.wsay);return}
+  const tp=e.target.closest('[data-wtip]');if(tp){window.hskTip&&hskTip(tp.dataset.wtip);return}
+  const f=e.target.closest('[data-wflip]');if(!f)return;
+  const card=box.firstElementChild;const go=()=>{flip=!flip;render(true);if(flip&&window.hskSay)hskSay(pick().w)};
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){go();return}
+  card.classList.add('flipOut');setTimeout(go,180);
+});
+function fromHash(){if(location.hash!=='#wotd')return;flip=true;window.hskShow&&hskShow('home');
+  history.replaceState(null,'',location.pathname);
+  const t=setInterval(()=>{const b=document.getElementById('wotdBox');if(b&&D){clearInterval(t);render(true);b.scrollIntoView({block:'start'});scrollBy(0,-60)}},120);setTimeout(()=>clearInterval(t),4000)}
+addEventListener('hashchange',fromHash);
+render();fromHash();
 })();
 </script>
 </body>

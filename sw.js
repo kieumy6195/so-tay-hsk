@@ -1,13 +1,13 @@
-const CACHE='hsk-v13';
+const CACHE='hsk-v14';
 const CORE=['./','./index.html','./manifest.webmanifest','./icon-180.png','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
 self.addEventListener('fetch',e=>{
   const req=e.request;if(req.method!=='GET')return;
   const url=new URL(req.url);
-  if(url.origin===location.origin&&(req.mode==='navigate'||url.pathname.endsWith('/')||url.pathname.endsWith('.html'))){
+  if(url.origin===location.origin&&(req.mode==='navigate'||url.pathname.endsWith('/')||url.pathname.endsWith('.html')||url.pathname.endsWith('.json'))){
     // trang: lấy mạng trước để nhận bản mới, mất mạng thì dùng bản đã lưu
-    e.respondWith(fetch(req,{cache:'no-store'}).then(r=>{const c=r.clone();caches.open(CACHE).then(x=>x.put('./index.html',c));return r;}).catch(()=>caches.match('./index.html')));
+    e.respondWith(fetch(req,{cache:'no-store'}).then(r=>{const c=r.clone();const isJ=url.pathname.endsWith('.json');caches.open(CACHE).then(x=>x.put(isJ?req:'./index.html',c));return r;}).catch(()=>caches.match(url.pathname.endsWith('.json')?req:'./index.html')));
     return;
   }
   // icon, font: dùng bản đã lưu, chưa có thì tải rồi lưu lại

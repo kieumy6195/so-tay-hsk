@@ -482,6 +482,55 @@ details.fold[open]>summary{margin-bottom:8px}
 .smH{font-family:'Mali',cursive;font-size:22px;margin:0 0 10px}
 .setBox{background:#fff;border:2px solid #2b2b3a;border-radius:14px;padding:12px;margin-bottom:10px}
 
+
+/* ===== v4: Tổng quan mới ===== */
+.hv2{background:#fff;border:2px solid #2b2b3a;border-radius:18px;padding:14px;box-shadow:3px 3px 0 #2b2b3a}
+.hToday{display:flex;gap:14px;align-items:center}
+.ring{position:relative;width:84px;height:84px;flex:none}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:9;stroke-linecap:round}
+.ring .rbg{stroke:#f1ece0}.ring .rfg{stroke:#20c997;transition:stroke-dashoffset .6s}
+.rtx{position:absolute;inset:0;display:flex;align-items:baseline;justify-content:center;padding-top:26px;font-family:'Mali',cursive}
+.rtx b{font-size:24px}.rtx small{font-size:13px;color:var(--muted)}
+.tTitle{font-family:'Mali',cursive;font-weight:700;font-size:19px;line-height:1.2}
+.tSub{font-size:13px;color:var(--muted);margin:2px 0 6px}
+.streak{display:inline-flex;align-items:center;gap:5px;background:#fff4e6;border-radius:99px;padding:2px 10px 2px 6px;font-size:13px}
+.streak .fire{font-size:16px}.streak b{font-family:'Mali',cursive;font-size:16px}
+.week2{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:14px 0 12px}
+.week2 div{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;color:var(--muted)}
+.week2 i{width:30px;height:30px;border-radius:50%;background:#f1ece0;display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:700;color:#fff;font-size:14px}
+.week2 .on i{background:#ffb547}
+.week2 .td i{box-shadow:0 0 0 2px #2b2b3a}
+.week2 .td span{color:var(--ink);font-weight:700}
+.goBtn{width:100%;font-family:'Mali',cursive;font-weight:700;font-size:18px;border:2px solid #2b2b3a;background:var(--y);border-radius:14px;padding:11px;cursor:pointer}
+.hSec{font-family:'Mali',cursive;font-weight:700;font-size:17px;margin:18px 2px 8px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.hSec small{font-family:'Be Vietnam Pro',sans-serif;font-weight:400;font-size:12.5px;color:var(--muted)}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.quick button{display:flex;flex-direction:column;align-items:center;gap:4px;background:#fff;border:2px solid #2b2b3a;border-radius:14px;padding:10px 2px;font-size:12.5px;font-weight:600;cursor:pointer}
+.quick button span{font-size:24px}
+.prog2{background:#fff;border:2px solid #2b2b3a;border-radius:14px;padding:10px 12px}
+.pRow{display:flex;align-items:center;gap:10px;margin:7px 0}
+.pLb{width:48px;font-family:'Mali',cursive;font-weight:700;font-size:13.5px;color:var(--c)}
+.pBar{flex:1;height:10px;background:#f1ece0;border-radius:99px;position:relative;overflow:hidden}
+.pBar i{position:absolute;left:0;top:0;bottom:0;border-radius:99px}.pBar i.a{opacity:.35}
+.pN{min-width:64px;text-align:right;font-weight:700;font-size:13px}.pN small{font-weight:400;color:var(--muted)}
+.pKey{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--muted);margin-top:6px}
+.pKey i{display:inline-block;width:14px;height:8px;border-radius:9px;background:#7c83fd}.pKey i.k1{opacity:.35}.pKey i.k2{margin-left:8px}
+@media(max-width:899px){
+ #cfTbl,#cfTbl tbody,#cfTbl tr,#cfTbl td{display:block;width:auto!important;border:0}
+ #cfTbl tr:first-child{display:none}
+ #cfTbl tr{background:#fff;border:2px solid #2b2b3a;border-radius:14px;padding:10px 12px;margin-bottom:10px}
+ #cfTbl td{padding:2px 0!important}
+ #cfTbl td:last-child{color:var(--muted);font-size:15px;margin-top:4px}
+}
+.cfTip{margin-top:6px;background:#fff9db;border-left:4px solid #ffd43b;border-radius:6px;padding:5px 8px;font-size:13.5px}
+.drLv{display:flex;gap:6px;overflow-x:auto;margin:0 0 8px;scrollbar-width:none}
+.drLv button{flex:none;border:2px solid #2b2b3a;background:#fff;border-radius:99px;padding:2px 12px;font-size:13px;font-weight:600;cursor:pointer}
+.drLv button.on{background:#2b2b3a;color:#fff;-webkit-text-fill-color:#fff}
+.qbar{display:flex;align-items:center;justify-content:space-between;gap:6px 8px;flex-wrap:wrap}.qend{flex-basis:100%}
+.qsc{white-space:nowrap;font-size:15px;display:inline-flex;gap:8px;align-items:center}.qsc .qtot{color:var(--muted);font-weight:600}
+.qbtns{margin-left:0;flex-wrap:nowrap}.qbtns button{white-space:nowrap}
+
 </style>
 </head>
 <body>
@@ -499,7 +548,7 @@ details.fold[open]>summary{margin-bottom:8px}
 <!-- ================= HOME ================= -->
 <section class="page" id="trang-chu">
   <h2 class="title"><span class="zh">概览</span>Tổng quan</h2>
-  <p class="sub">Mỗi ngày: ôn thẻ đến hạn → học vài từ mới → xem 1–2 điểm ngữ pháp.</p>
+  
   <div id="homeBox"></div>
 </section>
 <!-- ================= GRAMMAR (all levels) ================= -->
@@ -604,7 +653,7 @@ details.fold[open]>summary{margin-bottom:8px}
 
 <!-- ================= MISTAKES ================= -->
 <section class="page" id="loi-sai">
-  <h2 class="title"><span class="zh">常见错误</span>Lỗi sai người Việt hay mắc ❌→✅</h2>
+  <h2 class="title"><span class="zh">常见错误</span>Lỗi sai hay gặp ❌→✅</h2>
   <p class="sub">Bên trái là sai, bên phải là đúng. Che bên phải lại rồi tự sửa thử!</p>
   <div id="mkBox"></div>
 </section>
@@ -645,7 +694,7 @@ details.fold[open]>summary{margin-bottom:8px}
 <!-- ================= SRS ================= -->
 <section class="page" id="on-tap">
   <h2 class="title"><span class="zh">复习</span>Ôn tập mỗi ngày 🧠</h2>
-  <p class="sub">Thẻ nhớ lặp lại ngắt quãng: từ nhớ chắc thì lâu sau mới gặp lại, từ hay quên sẽ quay lại sớm. Bấm 🔊 để nghe phát âm. Tiến độ lưu trên trình duyệt này.</p>
+  <p class="sub">Nhớ chắc thì lâu mới gặp lại, hay quên thì gặp sớm.</p>
   <div class="srsStats" id="srsStats"></div>
   <details class="fold" data-deskopen><summary>⚙️ Tùy chỉnh ôn tập (cấp, số từ mới, kiểu thẻ, giọng đọc)</summary><div class="srsSet">
     <span class="srsLv" id="srsLv"><button data-l="1">🌸 HSK1</button><button data-l="2">🍊 HSK2</button><button data-l="3">💜 HSK3</button><button data-l="4">🍀 HSK4</button></span>
@@ -656,7 +705,7 @@ details.fold[open]>summary{margin-bottom:8px}
   </div></details>
   <div class="warn" id="srsVoice" style="display:none"></div>
   <div id="srsBox"></div>
-  <p class="note" style="margin-top:14px">💡 Từ mới của <b>cấp em đang học</b> (chọn ở 🏠 Tổng quan) sẽ ra trước. Gặp từ nào chắc chắn thuộc rồi thì bấm <b>“Từ này thuộc lâu rồi”</b>, thẻ đó sẽ 3 tháng sau mới hiện lại. Ở mục 📚 Từ vựng và 📅 20 ngày, bấm vào chữ Hán cũng nghe được phát âm.<br>⌨️ Trên máy tính: <b>Space</b> lật thẻ · <b>1–4</b> chọn Quên / Khó / Nhớ / Dễ.</p>
+  <p class="note" style="margin-top:14px">💡 Từ nào thuộc rồi → bấm <b>“Từ này thuộc lâu rồi”</b> để 3 tháng sau mới gặp lại.<br>⌨️ Máy tính: <b>Space</b> lật · <b>1–4</b> chấm.</p>
 </section>
 
 <!-- ================= QUIZ ================= -->
@@ -838,9 +887,15 @@ const CF=[
 ["帮助 / 帮忙","<b>帮助</b> + người.<br><b>帮忙</b>: ly hợp, không mang tân ngữ.","帮助我 · 帮我的忙 · ✗ 帮忙我"],
 ["怎么 / 怎么样","<b>怎么</b> + V: hỏi cách thức / tại sao.<br><b>怎么样</b>: hỏi tính chất, đánh giá.","怎么去？· 你怎么不来？· 这本书怎么样？"],
 ["以前 / 以后","<b>以前</b>: trước đây / trước khi.<br><b>以后</b>: sau này / sau khi.","吃饭以前要洗手。· 毕业以后我想去中国。"],
-["的 / 地 / 得","<b>的</b> + N · <b>地</b> + V · V + <b>得</b>","快乐的孩子 · 快乐地唱歌 · 唱得很快乐"]
+["的 / 地 / 得","<b>的</b> + N · <b>地</b> + V · V + <b>得</b>","快乐的孩子 · 快乐地唱歌 · 唱得很快乐"],
+["却 / 但是", "<b>但是</b> đứng đầu vế câu · <b>却</b> đứng SAU chủ ngữ. Dùng chung được: 但是他却…", "我很累，但是很开心。· 他很累，却很开心。", "🍀"],
+["常常 / 往往", "<b>常常</b>: thường (cả tương lai, ý muốn) · <b>往往</b>: thường theo quy luật, việc đã xảy ra, cần có điều kiện.", "以后我会常常来。· 周末他往往去爬山。", "🍀"],
+["因为 / 由于", "<b>由于</b> trang trọng, hay đi với 因此 · <b>因为</b> đứng được ở vế sau.", "由于天气不好，比赛推迟了。· 我没去，因为下雨了。", "🍀"],
+["对于 / 关于", "<b>对于</b>: đối với (thái độ với ai/cái gì) · <b>关于</b>: về (nội dung, chủ đề).", "对于这个问题，我有意见。· 这是一本关于中国历史的书。", "🍀"],
+["突然 / 忽然", "Cùng nghĩa “đột nhiên”. <b>突然</b> còn là tính từ: 很突然 · <b>忽然</b> chỉ là phó từ.", "这件事太突然了。· 天忽然下雨了。", "🍀"]
 ];
-document.getElementById('cfTbl').insertAdjacentHTML('beforeend',CF.map(r=>`<tr><td><b class="zh" style="font-size:19px;color:#d6336c">${r[0]}</b></td><td>${r[1]}</td><td class="zh">${r[2]}</td></tr>`).join(''));
+const CFTIP={"不 / 没": "Có <b>了 / 过</b> hoặc nói chuyện đã qua → nghĩ ngay tới <b>没</b>. Nói ý muốn, thói quen → <b>不</b>.", "二 / 两": "Sau nó có lượng từ (个, 本, 点…) → <b>两</b>. Đọc số, thứ tự → <b>二</b>.", "会 / 能 / 可以": "Nhớ theo Hán Việt: <b>会</b> HỘI (học rồi mới biết) · <b>能</b> NĂNG (đủ sức) · <b>可以</b> KHẢ DĨ (được phép).", "一点儿 / 有点儿": "<b>有点儿</b> đứng TRƯỚC tính từ để than phiền · <b>一点儿</b> đứng SAU tính từ để so sánh, xin thêm.", "次 / 遍": "<b>遍</b> có bộ 辶 (đi) → đi trọn một vòng, từ đầu đến cuối. <b>次</b> chỉ đếm số lần.", "就 / 才": "<b>就</b> = “tới liền” (sớm, dễ, hay có 了) · <b>才</b> = “mới tới” (muộn, khó, không 了).", "又 / 再 / 还": "<b>又</b> nhìn LÙI (lặp lại đã xảy ra) · <b>再</b> nhìn TỚI (sẽ lặp lại) · <b>还</b> = vẫn, còn nữa.", "刚 / 刚才": "<b>刚才</b> là mốc thời gian “lúc nãy” (đứng đầu câu được) · <b>刚</b> là phó từ “vừa mới”, luôn đứng trước động từ.", "还是 / 或者": "Có dấu <b>?</b> (câu hỏi lựa chọn) → <b>还是</b>. Câu kể → <b>或者</b>.", "认识 / 知道": "<b>认识</b> NHẬN THỨC = nhận mặt người, chữ, đường · <b>知道</b> TRI ĐẠO = biết thông tin.", "想 / 要": "“Không muốn” nói <b>不想</b>, vì <b>不要</b> = đừng. <b>要</b> mạnh hơn: cần, nhất định, sắp.", "帮助 / 帮忙": "<b>忙</b> đã là tân ngữ, nên <b>帮忙</b> không kèm người phía sau: 帮我<b>一个忙</b>. <b>帮助</b> + người.", "怎么 / 怎么样": "<b>怎么</b> + động từ = làm sao, tại sao · <b>怎么样</b> đứng cuối = thế nào rồi?", "以前 / 以后": "<b>前</b> TIỀN = trước · <b>后</b> HẬU = sau. Cả hai đứng SAU sự việc: 吃饭以前.", "的 / 地 / 得": "<b>的</b> + danh từ · <b>地</b> + động từ · động từ + <b>得</b>. Mẹo: 地 có 土 (đất) → chạy trên đất = động tác.", "却 / 但是": "却 không bao giờ đứng đầu câu — luôn nép sau chủ ngữ.", "常常 / 往往": "Nói về tương lai, lời hứa → chỉ dùng 常常.", "因为 / 由于": "由于 không đứng ở vế sau: ✗ 我没去，由于下雨.", "对于 / 关于": "Tên sách, bài viết “về…” → 关于.", "突然 / 忽然": "Có 很 / 太 đứng trước → chỉ dùng 突然."};
+document.getElementById('cfTbl').insertAdjacentHTML('beforeend',CF.map(r=>`<tr><td><b class="zh" style="font-size:19px;color:#d6336c">${r[0]}</b>${r[3]?' <small>'+r[3]+'</small>':''}</td><td>${r[1]}${CFTIP[r[0]]?`<div class="cfTip">💡 ${CFTIP[r[0]]}</div>`:''}</td><td class="zh">${r[2]}</td></tr>`).join(''));
 
 /* ---------- MEASURE WORDS ---------- */
 const MW=[["个","gè","người, vật chung","一个人"],["本","běn","sách, vở","一本书"],["张","zhāng","vật phẳng: giấy, bàn, vé","一张票"],["只","zhī","động vật nhỏ; 1 chiếc (đôi)","一只猫"],["条","tiáo","vật dài: cá, quần, đường, sông","一条鱼"],["件","jiàn","áo, sự việc","一件衣服"],["辆","liàng","xe cộ","一辆车"],["杯","bēi","cốc","一杯茶"],["瓶","píng","chai","一瓶水"],["碗","wǎn","bát","一碗米饭"],["双","shuāng","đôi","一双鞋"],["位","wèi","người (lịch sự)","一位老师"],["口","kǒu","nhân khẩu; ngụm","三口人"],["家","jiā","cửa hàng, công ty","一家商店"],["块","kuài","miếng; đồng (tiền)","一块蛋糕"],["层","céng","tầng","三层楼"],["段","duàn","đoạn, quãng","一段时间"],["种","zhǒng","loại","两种水果"],["次","cì","lần","去过一次"],["岁","suì","tuổi","二十岁"]];
@@ -1148,8 +1203,8 @@ const norm=s=>s.replace(/[\s。，！？、,.!?“”"]/g,'');
 function qScore(){
   const n=qItems.length,done=Object.keys(qRes).length,ok=Object.values(qRes).filter(Boolean).length;
   const pct=done?Math.round(ok/done*100):0;
-  qzBar.innerHTML=`<b>✅ ${ok}</b> đúng · <b style="color:var(--red)">❌ ${done-ok}</b> sai · ${done}/${n} câu
-   <div class="qbtns"><button onclick="qStart(qTab)">🔁 Làm lại (xáo câu)</button>${done-ok>0?'<button onclick="qWrong()">🎯 Làm lại câu sai</button>':''}</div>
+  qzBar.innerHTML=`<span class="qsc">✅ <b>${ok}</b> <span style="color:var(--red)">❌ <b>${done-ok}</b></span> <span class="qtot">${done}/${n}</span></span>
+   <div class="qbtns"><button onclick="qStart(qTab)">🔁 Làm lại</button>${done-ok>0?'<button onclick="qWrong()">🎯 Câu sai</button>':''}</div>
    ${done===n&&n?`<div class="qend">${pct>=80?'🏆 Xuất sắc!':pct>=60?'👍 Đạt rồi, cố thêm chút nữa!':'💪 Ôn lại phần ngữ pháp rồi làm lại nhé!'} Điểm: <b>${pct}%</b></div>`:''}`;
 }
 function mark(i,ok,el){qRes[i]=ok;el.classList.add(ok?'qok':'qno');qScore()}
@@ -1480,7 +1535,7 @@ document.querySelectorAll('details[data-deskopen]').forEach(d=>{if(innerWidth>=9
 /* --- cấp độ toàn cục --- */
 function setVocabLv(l){const b=document.querySelector(`#tu-vung [data-lv="${l}"]`);if(b)b.click()}
 function setLevel(l){st.lv=l;st.gg='all';saveUI();if(window.hskSRS)hskSRS.focus(l);setVocabLv(String(l));if(typeof vLv!=='undefined')vLv=String(l);}
-setVocabLv(String(st.lv));vLv=String(st.lv);if(window.hskSRS)hskSRS.focus(st.lv);
+setVocabLv(String(st.lv));vLv=String(st.lv);
 const lvPick=(id)=>`<div class="lvpick" id="${id}">${[1,2,3,4].map(l=>`<button data-pl="${l}" style="--c:${LVC[l]}" class="${l==st.lv?'on':''}">${LVE[l]} HSK${l}</button>`).join('')}</div>`;
 
 /* --- Ngữ pháp --- */
@@ -1503,57 +1558,41 @@ const pad=n=>String(n).padStart(2,'0');
 const dkey=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
 function renderHome(){
   const I=window.hskSRS?hskSRS.info():{due:0,newLeft:0,streak:0,today:0,log:{},per:{}};
-  const lv=st.lv,todo=I.due+I.newLeft;
+  const todo=I.due+I.newLeft,tot=I.today+todo,pct=tot?Math.min(100,Math.round(I.today/tot*100)):100;
   const days=[];for(let k=6;k>=0;k--){const d=new Date();d.setDate(d.getDate()-k);days.push(d)}
-  const W=['CN','T2','T3','T4','T5','T6','T7'];
+  const W=['CN','T2','T3','T4','T5','T6','T7'],R=34,C=2*Math.PI*R;
+  let learned=0,total=0,solid=0;[1,2,3,4].forEach(l=>{const p=I.per[l];if(p){learned+=p.l;total+=p.t;solid+=p.s}});
   $('homeBox').innerHTML=`
-    <div style="margin:6px 0 4px;font-weight:600">Cấp em đang học:</div>${lvPick('hLv')}
-    <div class="hGrid">
-      <div class="hCard hHero"><div class="fire">${I.streak?'🔥':'🌱'}</div>
-        <div><div class="big">${I.streak?I.streak+' ngày liên tiếp':'Bắt đầu chuỗi ngày học!'}</div>
-        <div class="meta">${I.today?`Hôm nay đã ôn ${I.today} thẻ`:'Hôm nay chưa ôn thẻ nào'} · ${todo?`còn ${I.due} thẻ đến hạn + ${I.newLeft} từ mới`:'đã xong phần hôm nay 🎉'}</div>
-        <div class="week">${days.map(d=>`<div><i class="${I.log[dkey(d)]?'on':''} ${dkey(d)===dkey(new Date())?'td':''}"></i>${W[d.getDay()]}</div>`).join('')}</div></div>
-        <button class="go" data-go="srs">${todo?`🧠 Ôn tập ngay (${todo})`:'🧠 Ôn thêm'}</button></div>
-      <button class="hCard hAct" data-go="gram"><div class="ic">📘</div><b>Ngữ pháp HSK${lv}</b><span>${(GR[lv]||[]).length} điểm ngữ pháp</span></button>
-      <button class="hCard hAct" data-go="vocab"><div class="ic">📚</div><b>Từ vựng HSK${lv}</b><span>${(VV[lv]||[]).length} từ · bấm chữ để nghe</span></button>
-      <button class="hCard hAct" data-go="quiz"><div class="ic">🎯</div><b>Kiểm tra từ HSK${lv}</b><span>20 câu trắc nghiệm ngẫu nhiên</span></button>
-      <button class="hCard hAct" data-go="shape"><div class="ic">👁</div><b>Luyện mặt chữ</b><span>Chọn đúng chữ giữa các chữ giống nhau</span></button>
-      <button class="hCard hAct" data-go="pin"><div class="ic">🔤</div><b>Luyện pinyin</b><span>Nghe & chọn · theo dõi lỗi hay nhầm</span></button>
-      <button class="hCard hAct" data-go="listen"><div class="ic">🎧</div><b>Thẻ nghe</b><span>Ôn tập kiểu nghe → nghĩa</span></button>
-      <div class="hCard hProg"><b style="font-family:'Mali',cursive;font-size:18px">📈 Tiến độ ôn tập</b>
-        ${[1,2,3,4].map(l=>{const p=I.per[l]||{l:0,t:(VV[l]||[]).length,s:0};const pc=p.t?Math.round(p.l/p.t*100):0;
-          return `<div class="row"><span class="lb" style="color:${LVC[l]}">HSK${l}</span><span class="bar"><i style="width:${pc}%;background:${LVC[l]}"></i></span><span class="n">${p.l}/${p.t} · ${p.s} chắc</span></div>`}).join('')}
+  <div class="hv2">
+    <div class="hToday">
+      <div class="ring"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="${R}" class="rbg"/><circle cx="40" cy="40" r="${R}" class="rfg" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-pct/100)}"/></svg>
+        <div class="rtx"><b>${I.today}</b><small>/${tot||0}</small></div></div>
+      <div class="tInfo">
+        <div class="tTitle">${todo?'Hôm nay còn '+todo+' thẻ':'Xong phần hôm nay 🎉'}</div>
+        <div class="tSub">${I.due} thẻ cần ôn · ${I.newLeft} từ mới</div>
+        <div class="streak"><span class="fire">${I.streak?'🔥':'🌱'}</span><b>${I.streak}</b> ngày liên tiếp</div>
       </div>
-    </div>`;
+    </div>
+    <div class="week2">${days.map(d=>{const k=dkey(d),on=I.log[k],td=k===dkey(new Date());return `<div class="${on?'on':''} ${td?'td':''}"><i>${on?'✓':''}</i><span>${W[d.getDay()]}</span></div>`}).join('')}</div>
+    <button class="goBtn" data-go="srs">🧠 ${todo?'Ôn tập ngay':'Ôn thêm'}</button>
+  </div>
+  <div class="hSec">Luyện nhanh</div>
+  <div class="quick">
+    <button data-go="shape"><span>👁</span>Mặt chữ</button>
+    <button data-go="pin"><span>🔤</span>Pinyin</button>
+    <button data-go="listen"><span>🎧</span>Nghe</button>
+    <button data-go="quiz"><span>🎯</span>Trắc nghiệm</button>
+  </div>
+  <div class="hSec">Tiến độ <small>${learned}/${total} từ đã học · ${solid} thuộc chắc</small></div>
+  <div class="prog2">${[1,2,3,4].map(l=>{const p=I.per[l]||{l:0,t:(VV[l]||[]).length,s:0};const pc=p.t?Math.round(p.l/p.t*100):0,ps=p.t?Math.round(p.s/p.t*100):0;
+    return `<div class="pRow"><span class="pLb" style="--c:${LVC[l]}">HSK${l}</span><span class="pBar"><i class="a" style="width:${pc}%;background:${LVC[l]}"></i><i class="b" style="width:${ps}%;background:${LVC[l]}"></i></span><span class="pN">${p.l}<small>/${p.t}</small></span></div>`}).join('')}
+    <div class="pKey"><i class="k1"></i>đã học <i class="k2"></i>thuộc chắc</div>
+  </div>`;
 }
-const BK=()=>{const o={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith('hsk'))o[k]=localStorage.getItem(k)}return 'HSKBAK1:'+btoa(unescape(encodeURIComponent(JSON.stringify(o))))};
-function bk(act){
-  const A=$('bkArea');let code='';try{code=BK()}catch(e){}
-  if(act==='copy'){
-    const done=()=>{A.innerHTML='✅ Đã sao chép. Mở app/máy kia → 💾 Khôi phục → dán vào.'};
-    try{navigator.clipboard.writeText(code).then(done,()=>show2())}catch(e){show2()}
-    function show2(){A.innerHTML='<div>Chọn hết đoạn mã dưới đây và sao chép:</div><textarea readonly rows="3">'+code+'</textarea>';const ta=A.querySelector('textarea');ta.focus();ta.select()}
-  }else if(act==='file'){
-    try{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([code],{type:'text/plain'}));a.download='so-tay-hsk-'+new Date().toISOString().slice(0,10)+'.txt';document.body.appendChild(a);a.click();a.remove();A.innerHTML='✅ Đã tải file sao lưu.'}catch(e){A.innerHTML='Không tải được file ở đây — dùng “Sao chép mã” nhé.'}
-  }else if(act==='paste'){
-    A.innerHTML='<textarea id="bkIn" rows="3" placeholder="Dán mã sao lưu (bắt đầu bằng HSKBAK1:) hoặc chọn file"></textarea><input type="file" id="bkFile" accept=".txt,text/plain"><button data-bk="do">Khôi phục</button>';
-    $('bkFile').onchange=e=>{const f=e.target.files[0];if(f)f.text().then(x=>{$('bkIn').value=x.trim()})};
-  }else if(act==='do'){
-    const v=($('bkIn').value||'').trim();
-    try{if(!v.startsWith('HSKBAK1:'))throw 0;const o=JSON.parse(decodeURIComponent(escape(atob(v.slice(8)))));
-      if(!confirm('Khôi phục sẽ ghi đè tiến độ hiện tại trên máy này. Tiếp tục?'))return;
-      Object.entries(o).forEach(([k,x])=>{if(k.startsWith('hsk'))localStorage.setItem(k,x)});location.reload()}
-    catch(e){A.insertAdjacentHTML('beforeend','<div style="color:#e03131">Mã không hợp lệ.</div>')}
-  }
-}
-document.addEventListener('click',e=>{const bb=e.target.closest('[data-bk]');if(bb)bk(bb.dataset.bk)});
 $('homeBox').addEventListener('click',e=>{
-  const p=e.target.closest('[data-pl]');if(p){setLevel(+p.dataset.pl);renderHome();return}
   const g=e.target.closest('[data-go]');if(!g)return;const k=g.dataset.go;
   if(k==='srs')show('srs');
-  else if(k==='gram')show('lib','ngu-phap');
-  else if(k==='vocab'){setVocabLv(String(st.lv));show('lib','tu-vung')}
-  else if(k==='quiz'){show('quiz');vLv=String(st.lv);vMode='hm';qStart('vocab')}
+  else if(k==='quiz'){show('quiz');vLv='all';vMode='hm';qStart('vocab')}
   else if(k==='shape'||k==='pin'){show('quiz');hskDrill(k)}
   else if(k==='listen'){if(window.hskSRS)hskSRS.mode('au');show('srs')}
 });
@@ -1622,7 +1661,9 @@ const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){re
 const store=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
 const VV={1:V1,2:V2,3:V3,4:V4};
 const isHan=w=>/^[一-鿿]+$/.test(w);
-const lvNow=()=>(window.hskLv?hskLv():4);
+const drLv=()=>{try{return localStorage.getItem('hskDrLv')||'all'}catch(e){return 'all'}};
+const lvOk=l=>drLv()==='all'||String(l)===drLv();
+const lvChips=()=>`<div class="drLv">${['all',1,2,3,4].map(l=>`<button data-dl="${l}" class="${String(l)===drLv()?'on':''}">${l==='all'?'Tất cả':'HSK'+l}</button>`).join('')}</div>`;
 const ALLW=[1,2,3,4].flatMap(l=>VV[l].map(w=>({...w,lv:l,id:w.w+'|'+w.p+(w.s?'#'+w.s:'')})));
 const ALLC=Object.keys(HV);
 const box=$('drillBox');
@@ -1630,7 +1671,7 @@ const box=$('drillBox');
 /* ---------- chung ---------- */
 let D=null; // phiên hiện tại
 function header(title,extra){
-  return `<div class="drHead"><div><b>${title}</b> · <span id="drScore">0/0</span></div>${extra||''}</div><div class="drBar"><i id="drProg"></i></div>`;
+  return lvChips()+`<div class="drHead"><div><b>${title}</b> · <span id="drScore">0/0</span></div>${extra||''}</div><div class="drBar"><i id="drProg"></i></div>`;
 }
 function setScore(){
   $('drScore').textContent=`${D.ok}/${D.done} đúng`;
@@ -1661,7 +1702,7 @@ function shapeOpts(w){
 }
 function shapeStart(mode){
   const err=load(SE,{});
-  let pool=mode==='err'?ALLW.filter(w=>err[w.id]):ALLW.filter(w=>w.lv==lvNow());
+  let pool=mode==='err'?ALLW.filter(w=>err[w.id]):ALLW.filter(w=>lvOk(w.lv));
   pool=pool.filter(w=>isHan(w.w));
   if(!pool.length){box.innerHTML=`<div class="drCard">Chưa có chữ nào bị sai 🎉 — hãy chơi lượt thường trước nhé.</div>`;return}
   D={kind:'shape',mode,items:sh(pool).slice(0,15),i:0,ok:0,done:0};
@@ -1671,7 +1712,7 @@ function shapeQ(){
   if(D.i>=D.items.length){endRound([['shape','🔁 Lượt mới'],['shape-err','🎯 Luyện chữ hay sai']]);return}
   const w=D.items[D.i];D.cur=w;D.opts=shapeOpts(w);D.ans=false;
   const nErr=Object.keys(load(SE,{})).length;
-  box.innerHTML=header('👁 Luyện mặt chữ',`<span class="drSub">HSK${w.lv} · ${nErr} chữ đang ghi lỗi</span>`)+
+  box.innerHTML=header('👁 Luyện mặt chữ',`<span class="drSub">${nErr} chữ đang ghi lỗi</span>`)+
    `<div class="drCard"><div class="drQ">Chữ nào là <b>“${w.m}”</b>?</div>
     <div class="drTools"><button data-act="say">🔊 Nghe</button><button data-act="hint">💡 Gợi ý Hán Việt</button></div>
     <div class="drHint" id="drHint"></div>
@@ -1727,7 +1768,7 @@ function pinOpts(w){
 function errTop(n){const e=load(PE,{});return Object.entries(e).sort((a,b)=>b[1]-a[1]).slice(0,n)}
 const KEYRE=k=>{if(k.startsWith('thanh'))return null;if(k==='-n / -ng')return /(n|ng)\b|n(?=[^aeiouüg])|ng/;const [a,b]=k.split(' / ');return new RegExp(`(${a.replace('ü','[üv]')}|${b.replace('ü','[üv]')})`)};
 function pinStart(mode,listen){
-  let pool=ALLW.filter(w=>w.lv==lvNow()&&isHan(w.w));
+  let pool=ALLW.filter(w=>lvOk(w.lv)&&isHan(w.w));
   if(mode==='err'){const top=errTop(3).map(x=>KEYRE(x[0])).filter(Boolean);if(top.length)pool=ALLW.filter(w=>isHan(w.w)&&top.some(r=>r.test(sylNorm(w.p))))}
   D={kind:'pin',mode,listen:!!listen,items:sh(pool).slice(0,15),i:0,ok:0,done:0};
   pinQ();
@@ -1762,6 +1803,7 @@ function pinAns(i){
 box.addEventListener('click',e=>{
   const b=e.target.closest('button');if(!b)return;
   if(b.dataset.o!==undefined){D.kind==='shape'?shapeAns(+b.dataset.o):pinAns(+b.dataset.o);return}
+  if(b.dataset.dl){try{localStorage.setItem('hskDrLv',b.dataset.dl)}catch(x){}D&&D.kind==='pin'?pinStart('lv',D.listen):shapeStart('lv');return}
   const a=b.dataset.act;
   if(a==='say')say(D.cur.w);
   else if(a==='slow'){const u=window.speechSynthesis;if(u){try{const r=new SpeechSynthesisUtterance(D.cur.w);r.lang='zh-CN';r.rate=0.5;u.cancel();u.speak(r)}catch(x){}}}

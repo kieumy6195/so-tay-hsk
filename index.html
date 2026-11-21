@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Sổ Tay HSK">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="theme-color" content="#2b2b3a">
 <link rel="apple-touch-icon" href="icon-180.png">
 
@@ -449,6 +449,39 @@ body{padding-left:212px;padding-top:0}
 .bkBtns{display:flex;gap:8px;flex-wrap:wrap}.bkBtns button,.bkArea button{font-family:'Mali',cursive;font-weight:600;border:2px solid #2b2b3a;background:#fff;border-radius:99px;padding:4px 12px;cursor:pointer}
 .bkArea{margin-top:8px;font-size:13.5px;display:flex;flex-direction:column;gap:6px}.bkArea textarea{width:100%;box-sizing:border-box;font-size:12px;border:2px solid #2b2b3a;border-radius:10px;padding:6px}
 @media(display-mode:standalone){#mtop{padding-top:env(safe-area-inset-top);height:calc(44px + env(safe-area-inset-top))}}
+
+/* ===== v3 fixes ===== */
+html{background:#2b2b3a}
+:root{--hdr:0px;--lib:52px}
+@media(max-width:899px){:root{--hdr:44px}}
+@media(max-width:899px) and (display-mode:standalone){:root{--hdr:calc(44px + env(safe-area-inset-top))}}
+.libbar.on{position:sticky;top:var(--hdr);z-index:20;background:#e9e3d6;padding-top:8px;padding-bottom:8px;margin-top:0;margin-bottom:0;max-width:none}
+@media(min-width:900px){.libbar.on{padding-left:calc((100% - 980px)/2 + 12px)}}
+body .vbar{top:calc(var(--hdr) + var(--lib))!important}
+@media(min-width:900px){.vbar{top:var(--lib)!important}}
+@media(max-width:899px){
+  body .stk{top:var(--hdr)}
+  #luyen-thi .stk{top:var(--hdr)!important}
+  .qbar{top:var(--hdr)}
+}
+#mtop{gap:6px}
+#mSetBtn{margin-left:0}
+.sideSet{margin-top:auto;font-size:15px!important;opacity:.85}
+details.fold{margin:10px 0 14px;background:#fff;border:2px dashed #e4dccb;border-radius:12px;padding:6px 12px}
+details.fold>summary{cursor:pointer;font-weight:600;font-size:14.5px;color:var(--muted);list-style:none}
+details.fold>summary::-webkit-details-marker{display:none}
+details.fold>summary::before{content:'▸ ';}
+details.fold[open]>summary::before{content:'▾ ';}
+details.fold[open]>summary{margin-bottom:8px}
+@media(max-width:899px){.legend{grid-template-columns:1fr 1fr;gap:6px}.legend div{font-size:12.5px;padding:5px 8px}}
+#setModal{position:fixed;inset:0;z-index:70;display:none}
+#setModal.on{display:block}
+#setModal .smBg{position:absolute;inset:0;background:rgba(20,20,30,.45)}
+#setModal .smBox{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(520px,calc(100% - 24px));max-height:86vh;overflow-y:auto;background:var(--paper);border:3px solid #2b2b3a;border-radius:20px;padding:16px 16px 18px;box-shadow:6px 6px 0 #2b2b3a}
+.smX{position:absolute;top:10px;right:12px;border:0;background:#eee;border-radius:99px;width:32px;height:32px;font-size:15px;cursor:pointer}
+.smH{font-family:'Mali',cursive;font-size:22px;margin:0 0 10px}
+.setBox{background:#fff;border:2px solid #2b2b3a;border-radius:14px;padding:12px;margin-bottom:10px}
+
 </style>
 </head>
 <body>
@@ -465,7 +498,7 @@ body{padding-left:212px;padding-top:0}
 
 <!-- ================= HOME ================= -->
 <section class="page" id="trang-chu">
-  <h2 class="title"><span class="zh">今天</span>Hôm nay</h2>
+  <h2 class="title"><span class="zh">概览</span>Tổng quan</h2>
   <p class="sub">Mỗi ngày: ôn thẻ đến hạn → học vài từ mới → xem 1–2 điểm ngữ pháp.</p>
   <div id="homeBox"></div>
 </section>
@@ -497,14 +530,14 @@ body{padding-left:212px;padding-top:0}
 <section class="page" id="nen-tang">
   <h2 class="title"><span class="zh">说明</span>Cách đọc cuốn vở</h2>
   <p class="sub">Mỗi ký hiệu có một ý nghĩa cố định — học thuộc bảng này trước.</p>
-  <div class="legend">
+  <details class="fold" data-deskopen><summary>📖 Chú thích màu & ký hiệu</summary><div class="legend">
     <div><span class="hy">Vàng</span> = từ khóa phải nhớ</div>
     <div><span class="hp">Hồng</span> = cấu trúc / vị trí từ</div>
     <div><span class="hg">Xanh lá</span> = cách dùng đúng</div>
     <div><span class="u">Gạch đỏ lượn sóng</span> = bẫy hay sai</div>
     <div>🌸 HSK1 · 🍊 HSK2 · 💜 HSK3</div>
     <div>⚠️ Cảnh báo · 💡 Mẹo nhớ</div>
-  </div>
+  </div></details>
 
   <h3>🎵 4 thanh điệu + thanh nhẹ</h3>
   <div class="tones">
@@ -605,7 +638,6 @@ body{padding-left:212px;padding-top:0}
     <button id="tM">🙈 Che nghĩa</button><button id="tP">🙈 Che pinyin</button><button id="shuf">🔀 Xáo trộn</button>
     <span class="vcount" id="cnt"></span>
   </div>
-  <div class="toneKey">Màu thanh: <b class="t1">ā thanh 1</b><b class="t2">á thanh 2</b><b class="t3">ǎ thanh 3</b><b class="t4">à thanh 4</b><b class="t5">a nhẹ</b> · <span class="hv">HÁN VIỆT</span></div>
   <div class="vgrid" id="vg"></div>
   <p class="note" style="margin-top:18px">📝 Theo <b>đề cương HSK 3.0 mới nhất</b> (CLEC công bố 11/2025, thi theo chuẩn mới từ 13/12/2026): HSK1 = 300 từ · HSK2 = +200 (tổng 500) · HSK3 = +500 (tổng 1.000) · HSK4 = +1.000 (tổng 2.000). Từ nào trùng với file từ vựng cũ của em thì có kèm câu ví dụ.</p>
 </section>
@@ -615,16 +647,16 @@ body{padding-left:212px;padding-top:0}
   <h2 class="title"><span class="zh">复习</span>Ôn tập mỗi ngày 🧠</h2>
   <p class="sub">Thẻ nhớ lặp lại ngắt quãng: từ nhớ chắc thì lâu sau mới gặp lại, từ hay quên sẽ quay lại sớm. Bấm 🔊 để nghe phát âm. Tiến độ lưu trên trình duyệt này.</p>
   <div class="srsStats" id="srsStats"></div>
-  <div class="srsSet">
+  <details class="fold" data-deskopen><summary>⚙️ Tùy chỉnh ôn tập (cấp, số từ mới, kiểu thẻ, giọng đọc)</summary><div class="srsSet">
     <span class="srsLv" id="srsLv"><button data-l="1">🌸 HSK1</button><button data-l="2">🍊 HSK2</button><button data-l="3">💜 HSK3</button><button data-l="4">🍀 HSK4</button></span>
     <label>Từ mới/ngày <select id="srsNew"><option>5</option><option>10</option><option>15</option><option>20</option><option>30</option><option>50</option></select></label>
     <label>Kiểu thẻ <select id="srsMode"><option value="hm">Chữ Hán → Nghĩa</option><option value="mh">Nghĩa → Chữ Hán</option><option value="au">🎧 Nghe → Nghĩa</option></select></label>
     <label>Tốc độ đọc <select id="srsRate"><option value="0.6">Chậm</option><option value="0.8">Vừa</option><option value="1">Bình thường</option></select></label>
     <label><input type="checkbox" id="srsAuto"> Tự đọc khi lật</label>
-  </div>
+  </div></details>
   <div class="warn" id="srsVoice" style="display:none"></div>
   <div id="srsBox"></div>
-  <p class="note" style="margin-top:14px">💡 Từ mới của <b>cấp em đang học</b> (chọn ở 🏠 Hôm nay) sẽ ra trước. Gặp từ nào chắc chắn thuộc rồi thì bấm <b>“Từ này thuộc lâu rồi”</b>, thẻ đó sẽ 3 tháng sau mới hiện lại. Ở mục 📚 Từ vựng và 📅 20 ngày, bấm vào chữ Hán cũng nghe được phát âm.<br>⌨️ Trên máy tính: <b>Space</b> lật thẻ · <b>1–4</b> chọn Quên / Khó / Nhớ / Dễ.</p>
+  <p class="note" style="margin-top:14px">💡 Từ mới của <b>cấp em đang học</b> (chọn ở 🏠 Tổng quan) sẽ ra trước. Gặp từ nào chắc chắn thuộc rồi thì bấm <b>“Từ này thuộc lâu rồi”</b>, thẻ đó sẽ 3 tháng sau mới hiện lại. Ở mục 📚 Từ vựng và 📅 20 ngày, bấm vào chữ Hán cũng nghe được phát âm.<br>⌨️ Trên máy tính: <b>Space</b> lật thẻ · <b>1–4</b> chọn Quên / Khó / Nhớ / Dễ.</p>
 </section>
 
 <!-- ================= QUIZ ================= -->
@@ -1378,7 +1410,7 @@ window.hskSRS={
 (()=>{
 const $=id=>document.getElementById(id);
 const LIB=[['ngu-phap','📘 Ngữ pháp'],['tu-vung','📚 Từ vựng'],['luong-tu','📦 Lượng từ'],['phan-biet','⚖️ Dễ nhầm'],['loi-sai','❌ Lỗi sai'],['quy-tac-vang','⭐ Quy tắc vàng'],['nen-tang','🎵 Thanh điệu']];
-const TABS=[['home','🏠','Hôm nay'],['lib','📖','Thư viện'],['srs','🧠','Ôn tập'],['quiz','🎯','Luyện thi']];
+const TABS=[['home','🏠','Tổng quan'],['lib','📖','Thư viện'],['srs','🧠','Ôn tập'],['quiz','🎯','Luyện thi']];
 const LVC={1:'var(--h1)',2:'var(--h2)',3:'var(--h3)',4:'var(--h4)'};
 const LVE={1:'🌸',2:'🍊',3:'💜',4:'🍀'};
 const GR={1:G1,2:G2,3:G3,4:G4};
@@ -1391,8 +1423,8 @@ const saveUI=()=>{try{localStorage.setItem('hskUI',JSON.stringify(st))}catch(e){
 const tabHTML=cls=>TABS.map(t=>`<button class="${cls}" data-v="${t[0]}"><span class="ic">${t[1]}</span><span>${t[2]}</span></button>`).join('');
 document.body.insertAdjacentHTML('afterbegin',
   `<aside id="side"><div class="brand">汉语宝典</div><div class="bsub">Sổ Tay Vàng HSK 1–4</div>
-   <input id="sSearch" type="search" placeholder="🔍 Tra từ: 学 / xue / học…">${tabHTML('tabbtn')}</aside>
-   <div id="mtop"><span class="t" id="mTitle">🏠 Hôm nay</span><input id="mSearch" type="search" placeholder="Tra từ: 学 / xue / học…"><button id="mSrchBtn" aria-label="Tra từ">🔍</button></div>
+   <input id="sSearch" type="search" placeholder="🔍 Tra từ: 学 / xue / học…">${tabHTML('tabbtn')}<button class="tabbtn sideSet" id="sSetBtn"><span class="ic">⚙️</span><span>Cài đặt & đồng bộ</span></button></aside>
+   <div id="mtop"><span class="t" id="mTitle">🏠 Tổng quan</span><input id="mSearch" type="search" placeholder="Tra từ: 学 / xue / học…"><button id="mSrchBtn" aria-label="Tra từ">🔍</button><button id="mSetBtn" aria-label="Cài đặt">⚙️</button></div>
    <div id="tabbar">${tabHTML('')}</div>`);
 const book=document.querySelector('.book');
 book.insertAdjacentHTML('beforebegin',`<div class="libbar" id="libbar">${LIB.map(l=>`<button data-l="${l[0]}">${l[1]}</button>`).join('')}</div>`);
@@ -1425,6 +1457,25 @@ $('sSearch').addEventListener('input',e=>search(e.target.value));
 $('mSearch').addEventListener('input',e=>search(e.target.value));
 $('mSearch').addEventListener('keydown',e=>{if(e.key==='Enter')e.target.blur()});
 $('mSrchBtn').onclick=()=>{const m=$('mtop'),on=m.classList.toggle('srch');if(on)$('mSearch').focus();else $('mSearch').value=''};
+
+
+/* --- ⚙️ Cài đặt: đồng bộ + sao lưu --- */
+const BAKHTML=`<div class="setBox"><b style="font-family:'Mali',cursive;font-size:18px">💾 Sao lưu tiến độ</b>
+        <div class="bkTxt">Chuyển tiến độ ôn tập, lỗi hay nhầm và mẹo của em sang máy / app khác.</div>
+        <div class="bkBtns"><button data-bk="copy">📋 Sao chép mã</button>${window.top===window?'<button data-bk="file">⬇️ Tải file</button>':''}<button data-bk="paste">📥 Khôi phục</button></div>
+        <div class="bkArea" id="bkArea"></div></div>`;
+function settings(refresh){
+  let m=$('setModal');
+  if(!m){document.body.insertAdjacentHTML('beforeend','<div id="setModal"><div class="smBg"></div><div class="smBox"></div></div>');m=$('setModal');
+    m.addEventListener('click',e=>{if(e.target.classList.contains('smBg')||e.target.closest('.smX'))m.classList.remove('on')})}
+  if(refresh&&!m.classList.contains('on'))return;
+  m.querySelector('.smBox').innerHTML=`<button class="smX" aria-label="Đóng">✕</button><h3 class="smH">⚙️ Cài đặt</h3>${window.hskSyncCard?hskSyncCard():''}${BAKHTML}`;
+  m.classList.add('on');
+}
+window.hskSettings=settings;
+$('mSetBtn').onclick=()=>settings();$('sSetBtn').onclick=()=>settings();
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('setModal'))$('setModal').classList.remove('on')});
+document.querySelectorAll('details[data-deskopen]').forEach(d=>{if(innerWidth>=900)d.open=true});
 
 /* --- cấp độ toàn cục --- */
 function setVocabLv(l){const b=document.querySelector(`#tu-vung [data-lv="${l}"]`);if(b)b.click()}
@@ -1469,11 +1520,6 @@ function renderHome(){
       <button class="hCard hAct" data-go="shape"><div class="ic">👁</div><b>Luyện mặt chữ</b><span>Chọn đúng chữ giữa các chữ giống nhau</span></button>
       <button class="hCard hAct" data-go="pin"><div class="ic">🔤</div><b>Luyện pinyin</b><span>Nghe & chọn · theo dõi lỗi hay nhầm</span></button>
       <button class="hCard hAct" data-go="listen"><div class="ic">🎧</div><b>Thẻ nghe</b><span>Ôn tập kiểu nghe → nghĩa</span></button>
-      ${window.hskSyncCard?hskSyncCard():''}
-      <div class="hCard hBak"><b style="font-family:'Mali',cursive;font-size:18px">💾 Sao lưu tiến độ</b>
-        <div class="bkTxt">Chuyển tiến độ ôn tập, lỗi hay nhầm và mẹo của em sang máy / app khác.</div>
-        <div class="bkBtns"><button data-bk="copy">📋 Sao chép mã</button>${window.top===window?'<button data-bk="file">⬇️ Tải file</button>':''}<button data-bk="paste">📥 Khôi phục</button></div>
-        <div class="bkArea" id="bkArea"></div></div>
       <div class="hCard hProg"><b style="font-family:'Mali',cursive;font-size:18px">📈 Tiến độ ôn tập</b>
         ${[1,2,3,4].map(l=>{const p=I.per[l]||{l:0,t:(VV[l]||[]).length,s:0};const pc=p.t?Math.round(p.l/p.t*100):0;
           return `<div class="row"><span class="lb" style="color:${LVC[l]}">HSK${l}</span><span class="bar"><i style="width:${pc}%;background:${LVC[l]}"></i></span><span class="n">${p.l}/${p.t} · ${p.s} chắc</span></div>`}).join('')}
@@ -1500,8 +1546,8 @@ function bk(act){
     catch(e){A.insertAdjacentHTML('beforeend','<div style="color:#e03131">Mã không hợp lệ.</div>')}
   }
 }
+document.addEventListener('click',e=>{const bb=e.target.closest('[data-bk]');if(bb)bk(bb.dataset.bk)});
 $('homeBox').addEventListener('click',e=>{
-  const bb=e.target.closest('[data-bk]');if(bb){bk(bb.dataset.bk);return}
   const p=e.target.closest('[data-pl]');if(p){setLevel(+p.dataset.pl);renderHome();return}
   const g=e.target.closest('[data-go]');if(!g)return;const k=g.dataset.go;
   if(k==='srs')show('srs');
@@ -1797,7 +1843,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 window.addEventListener('online',()=>cfg&&sync(false));
 
 /* thẻ trên màn Hôm nay */
-window.hskSyncCard=()=>`<div class="hCard hBak" id="syncCard"><b style="font-family:'Mali',cursive;font-size:18px">🔄 Đồng bộ giữa các máy</b>
+window.hskSyncCard=()=>`<div class="setBox" id="syncCard"><b style="font-family:'Mali',cursive;font-size:18px">🔄 Đồng bộ giữa các máy</b>
   ${cfg?`<div class="bkTxt" id="syncSt">${statusText()}</div><div class="bkBtns"><button data-sy="now">🔄 Đồng bộ ngay</button><button data-sy="code">📋 Mã cho máy khác</button><button data-sy="off">Ngắt kết nối</button></div>`
   :`<div class="bkTxt">Dán <b>mã đồng bộ</b> (mã ngắn hoặc mã dài HSKSYNC1:…) để tiến độ tự đồng bộ giữa điện thoại và máy tính.</div>
     <div class="bkArea"><textarea id="syIn" rows="2" placeholder="Dán mã đồng bộ…" autocapitalize="off" autocorrect="off" spellcheck="false"></textarea><button data-sy="on">Kết nối</button></div>`}</div>`;
@@ -1805,9 +1851,9 @@ document.addEventListener('click',e=>{
   const b=e.target.closest('[data-sy]');if(!b)return;const a=b.dataset.sy;
   if(a==='now')sync(false);
   else if(a==='code'){const code='HSKSYNC1:'+btoa(JSON.stringify({u:cfg.u,k:cfg.k}));const el=document.getElementById('syncSt');
-    const done=()=>{el.innerHTML='✅ Đã sao chép mã. Trên máy kia: mở app → 🔄 Đồng bộ → dán mã → Kết nối.'};
+    const done=()=>{el.innerHTML='✅ Đã sao chép mã. Trên máy kia: mở app → ⚙️ Cài đặt → dán mã → Kết nối.'};
     try{navigator.clipboard.writeText(code).then(done,()=>{el.innerHTML='<textarea readonly rows="2" style="width:100%">'+code+'</textarea>'})}catch(x){el.innerHTML='<textarea readonly rows="2" style="width:100%">'+code+'</textarea>'}}
-  else if(a==='off'){if(confirm('Ngắt đồng bộ trên máy này? Tiến độ trên máy vẫn giữ nguyên.')){localStorage.removeItem(CFG);cfg=null;window.hskShow&&hskShow('home',null,true)}}
+  else if(a==='off'){if(confirm('Ngắt đồng bộ trên máy này? Tiến độ trên máy vẫn giữ nguyên.')){localStorage.removeItem(CFG);cfg=null;window.hskSettings&&hskSettings(true)}}
   else if(a==='on'){
     const raw=(document.getElementById('syIn').value||'').replace(/[\s\u200b-\u200d\ufeff]/g,'');
     try{let c;const m=raw.match(/HSKSYNC1:([A-Za-z0-9+/=_-]+)/);
@@ -1815,12 +1861,12 @@ document.addEventListener('click',e=>{
       else if(/^[A-Za-z0-9_-]{16,64}$/.test(raw)){c={u:DEF_URL,k:raw}}
       else throw 0;
       if(!c.u||!c.k)throw 0;
-      cfg=c;set(CFG,JSON.stringify(c));sessionStorage.removeItem('hskSynced');window.hskShow&&hskShow('home',null,true);sync(true)}
+      cfg=c;set(CFG,JSON.stringify(c));sessionStorage.removeItem('hskSynced');window.hskSettings&&hskSettings(true);sync(true)}
     catch(x){alert('Mã đồng bộ không hợp lệ. Kiểm tra lại xem đã dán đủ mã chưa.')}
   }
 });
 if(cfg)setTimeout(()=>sync(true),800);
-{const h=document.getElementById('trang-chu');if(h&&h.classList.contains('show')&&window.hskShow)hskShow('home',null,true)}
+window.hskSyncOn=()=>!!cfg;
 })();
 
 /* ---------- nav highlight ---------- */

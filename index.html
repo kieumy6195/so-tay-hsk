@@ -807,7 +807,9 @@ body.cozy .drLv button.on,body.cozy .vbar button.on{background:var(--y);border-c
 .mLb{font-family:'Baloo 2','Mali',cursive;font-weight:700;font-size:11.5px;color:var(--muted);margin-top:20px;white-space:nowrap}
 @keyframes medalIn{0%{transform:scale(.4) rotate(-30deg);opacity:0}100%{transform:none;opacity:1}}
 @keyframes wob{0%,100%{transform:rotate(0)}50%{transform:rotate(-6deg)}}
-.srsCard .lvb.medal.sm{--c:inherit;position:absolute;top:-16px;left:-12px;width:50px;height:50px;padding:0;border-radius:0;color:var(--ink);background:none;z-index:2;--d:rgba(74,46,34,.3)}
+.srsCard .lvb.medal.sm{position:absolute;top:12px;left:12px;width:48px;height:48px;padding:0;border-radius:0;color:#fff;background:none;z-index:2;--d:#fff;filter:drop-shadow(0 2px 0 rgba(74,46,34,.18)) drop-shadow(0 0 1.5px rgba(74,46,34,.25))}
+.srsCard .lvb.medal.sm::after{inset:3px;background:var(--c)}
+.srsCard .lvb.medal.sm b,.srsCard .lvb.medal.sm small{text-shadow:0 1px 0 rgba(0,0,0,.18)}
 .srsCard .lvb.medal.sm b{font-size:11px}.srsCard .lvb.medal.sm small{font-size:17px;opacity:1;margin-top:-1px}
 @media (prefers-reduced-motion:reduce){.medalW .medal,.medalW .medal.hot{animation:none}}
 
@@ -829,7 +831,7 @@ body.cozy .drLv button.on,body.cozy .vbar button.on{background:var(--y);border-c
 .week2 .shd i{background:#bfe3ff!important;border-color:#3a87bd!important}.week2 .shd i svg{width:15px;height:15px}
 .shLine{font-size:12.5px;color:var(--muted);text-align:center;margin:8px 0 2px}
 .shLine b{color:var(--ink)}
-#giftBox{margin:10px 0 4px}
+#giftBox{margin:12px 0 18px}
 .gBox{display:flex;align-items:center;gap:12px;width:100%;border:2.5px dashed #f2b45e;background:#fff6e0;border-radius:18px;padding:10px 14px;cursor:pointer;text-align:left;font:inherit;color:inherit}
 .gBox svg{width:58px;height:58px;flex:none;animation:gShake 2.2s ease-in-out infinite;transform-origin:50% 90%}
 .gBox b{display:block;font-family:'Baloo 2','Mali',cursive;font-weight:800;font-size:18px}
@@ -1813,7 +1815,7 @@ window.hskSRS={
       if(!used.has(k(d))){const w=wk(d);if([...used].some(u=>wkOf(u)===w))break;used.add(k(d));changed=true}
       d=pv;
     }
-    if(changed){try{localStorage.setItem('hskShield',JSON.stringify({used:[...used].sort().slice(-60)}))}catch(e){}}
+    if(changed){try{localStorage.setItem('hskShield',JSON.stringify({used:[...used].sort().slice(-60)}))}catch(e){}window.hskSyncSoon&&setTimeout(()=>hskSyncSoon(),0)}
     const nowW=wk(new Date()),usedNow=[...used].find(u=>wkOf(u)===nowW)||'';
     return {due,newLeft:Math.min(newLeft(),P.filter(w=>!S.c[w.k]).length),streak,today:td,log,per,shield:{left:usedNow?0:1,used:usedNow}};
   }
@@ -2203,7 +2205,7 @@ window.hskDrill=t=>window.qStart(t);
 /* ===== 🔄 Đồng bộ tiến độ qua Google Apps Script của chính người học ===== */
 (()=>{
 const DEF_URL='https://script.google.com/macros/s/AKfycbwHpDeD9Sa0cqvMUVqSm2bWZPPaeTb4X3LT2Au8UMV1yw3cYevA7DfX__vBlNHKeM-c5Q/exec';
-const CFG='hskSyncCfg',KEYS=['hskSRS.v1','hskShapeErr','hskPyErr','hskMyTips'];
+const CFG='hskSyncCfg',KEYS=['hskSRS.v1','hskShapeErr','hskPyErr','hskMyTips','hskGift','hskShield'];
 const get=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
 const set=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
 let cfg=null;try{cfg=JSON.parse(get(CFG)||'null')}catch(e){}
@@ -2221,6 +2223,9 @@ function merge(loc,rem){
   }else if(b&&!a)out['hskSRS.v1']=rem['hskSRS.v1'];
   ['hskShapeErr','hskPyErr'].forEach(k=>{const x=J(loc[k],{}),y=J(rem[k],{}),c={...y};for(const i in x)c[i]=Math.max(x[i],c[i]||0);out[k]=JSON.stringify(c)});
   out.hskMyTips=JSON.stringify({...J(rem.hskMyTips,{}),...J(loc.hskMyTips,{})});
+  {const x=J(loc.hskShield,{}),y=J(rem.hskShield,{});if(x.used||y.used)out.hskShield=JSON.stringify({used:[...new Set([...(y.used||[]),...(x.used||[])])].sort().slice(-60)})}
+  {const x=J(loc.hskGift,null),y=J(rem.hskGift,null);if(x||y){const a=x||{},b=y||{},w=(a.d||'')>=(b.d||'')?a:b;
+    out.hskGift=JSON.stringify({...w,n:Math.max(a.n||0,b.n||0),seen:[...new Set([...(a.seen||[]),...(b.seen||[])])]})}}
   return out;
 }
 async function call(body){
@@ -2236,7 +2241,7 @@ async function sync(first){
     await call({action:'put',data:m});
     last=Date.now();set('hskSyncAt',String(last));setStatus('');
     if(changed&&first&&!sessionStorage.getItem('hskSynced')){sessionStorage.setItem('hskSynced','1');location.reload();return}
-    if(changed&&window.hskSRS)hskSRS.refresh();
+    if(changed&&window.hskSRS)hskSRS.refresh();if(changed&&window.hskGiftR&&document.getElementById('homeBox'))window.hskGiftR();
   }catch(e){setStatus('⚠️ Chưa đồng bộ được ('+(e.message||'mất mạng')+'). Sẽ thử lại sau.')}
   busy=false;
 }
@@ -2511,7 +2516,7 @@ window.hskHWMount=box=>{
 const SVG=`<svg viewBox="0 0 64 64" fill="none" stroke="#4a2e22" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"><rect x="10" y="28" width="44" height="28" rx="4" fill="#ff9b7a"/><rect x="7" y="19" width="50" height="11" rx="3" fill="#ffc2a8"/><path d="M29 19h6v37h-6z" fill="#ffd65c"/><path d="M32 19c-3-8-14-10-14-3 0 4 8 4 14 3zM32 19c3-8 14-10 14-3 0 4-8 4-14 3z" fill="#ffd65c"/><path d="M15 36l3 3M47 44l3-3" stroke="#fff" stroke-width="2"/></svg>`;
 const dk=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 const get=()=>{try{return JSON.parse(localStorage.getItem('hskGift'))||{}}catch(e){return {}}};
-const put=v=>{try{localStorage.setItem('hskGift',JSON.stringify(v))}catch(e){}};
+const put=v=>{try{localStorage.setItem('hskGift',JSON.stringify(v))}catch(e){}window.hskSyncSoon&&hskSyncSoon()};
 let D=null,show=false;
 const data=()=>D?Promise.resolve(D):fetch('wotd.json').then(r=>r.json()).then(j=>D=j);
 function prize(g){const w=D&&D.words.find(x=>x.w===g.w);if(!w)return '';

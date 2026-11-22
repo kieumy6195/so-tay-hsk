@@ -849,8 +849,7 @@ body.cozy .drLv button.on,body.cozy .vbar button.on{background:var(--y);border-c
 .gMini b{font-family:var(--zh);font-size:18px;color:var(--ink);font-weight:400}
 
 /* ===== v21: đường chỉ khâu + dấu trang ruy băng ===== */
-body.cozy{--margin:transparent}
-body.cozy .page::after{content:"";position:absolute;top:0;bottom:0;left:54px;width:2px;pointer-events:none;
+body.cozy .page::after{display:none!important;content:"";position:absolute;top:0;bottom:0;left:54px;width:2px;pointer-events:none;
   background:repeating-linear-gradient(#e9a35a 0 9px,transparent 9px 15px)}
 body.cozy .page::after{box-shadow:4px 0 0 -0.5px rgba(233,163,90,.0)}
 @media(max-width:899px){body.cozy .page::after{left:13px}}
@@ -866,6 +865,113 @@ body.cozy .page::after{box-shadow:4px 0 0 -0.5px rgba(233,163,90,.0)}
 .wd .bm{top:4px;right:14px}
 .wdTop .d{margin-right:40px}
 @media (prefers-reduced-motion:reduce){.bm{animation:none}}
+
+/* ================= THEME: HỌC ĐƯỜNG (giấy trắng · bút bi xanh/đỏ · bút highlight) ================= */
+html.schoolH{background:#fff}
+body.cozy.school{--ink:#1f3f8f;--muted:#6a7bb0;--paper:#fff;--line:#dbe6f6;--margin:#f4a3a3;--ln:#b7c9ea;--sh:#e3ebf8;--y:#fff27a;--hl-y:#fff27a;--hl-p:#ffc4e1;--hl-g:#c3f5d0;--hl-b:#c8e9ff}
+body.cozy.school #mtop,
+body.cozy.school #tabbar button,
+body.cozy.school .bkArea button,
+body.cozy.school .bkBtns button,
+body.cozy.school .card .tag,
+body.cozy.school .card h4,
+body.cozy.school .cheer,
+body.cozy.school .chip,
+body.cozy.school .chipbar button,
+body.cozy.school .cover .lv span,
+body.cozy.school .cover h1,
+body.cozy.school .dayHead h4,
+body.cozy.school .days button,
+body.cozy.school .dnav button,
+body.cozy.school .drBtns button,
+body.cozy.school .drEnd .drBig,
+body.cozy.school .drHead,
+body.cozy.school .drNext,
+body.cozy.school .foot,
+body.cozy.school .gift,
+body.cozy.school .goBtn,
+body.cozy.school .hAct b,
+body.cozy.school .hHero .big,
+body.cozy.school .hHero .go,
+body.cozy.school .hProg .row .lb,
+body.cozy.school .hSec,
+body.cozy.school .libbar button,
+body.cozy.school .lvpick button,
+body.cozy.school .pLb,
+body.cozy.school .qNewBtn,
+body.cozy.school .qbtns button,
+body.cozy.school .qend,
+body.cozy.school .qn,
+body.cozy.school .qpyb,
+body.cozy.school .qpyrow button,
+body.cozy.school .qset button,
+body.cozy.school .qtabs button,
+body.cozy.school .qvib,
+body.cozy.school .qwrite button,
+body.cozy.school .rtx,
+body.cozy.school .rule .n,
+body.cozy.school .rule h5,
+body.cozy.school .seg button,
+body.cozy.school .shH,
+body.cozy.school .smH,
+body.cozy.school .srsFlip,
+body.cozy.school .srsG button,
+body.cozy.school .srsLv button,
+body.cozy.school .srsStats b,
+body.cozy.school .streak b,
+body.cozy.school .tTitle,
+body.cozy.school .tabbtn,
+body.cozy.school .tbl th,
+body.cozy.school .topbar,
+body.cozy.school .topbar button,
+body.cozy.school .vbar button,
+body.cozy.school .w .lv,
+body.cozy.school .wdBlk h5,
+body.cozy.school .wdBtns button,
+body.cozy.school .wdTop,
+body.cozy.school h2.title,
+body.cozy.school h3,
+body.cozy.school nav a{font-family:'Mali',cursive!important}
+body.cozy.school .page::after{display:none}
+body.cozy.school h2.title .zh{color:#e03131}
+body.cozy.school h2.title{font-weight:700}
+body.cozy.school #mtop{background:#fff;border-bottom:2px solid #dbe6f6}
+body.cozy.school #mtop button{background:#eef3fc;box-shadow:0 3px 0 #d3dff3}
+body.cozy.school #tabbar{background:#fff;border-top:2px solid #dbe6f6}
+body.cozy.school #tabbar button{color:#8a9cc8;-webkit-text-fill-color:#8a9cc8}
+body.cozy.school #tabbar button.on{background:var(--y);color:#1f3f8f;-webkit-text-fill-color:#1f3f8f;box-shadow:none;border:2px solid #1f3f8f;border-radius:16px 22px 18px 24px/22px 16px 24px 18px}
+body.cozy.school .libbar.on{background:#fff}
+/* thẻ: viền mực vẽ tay */
+body.cozy.school .hv2,body.cozy.school .wd,body.cozy.school .srsCard,body.cozy.school .qcard,body.cozy.school .prog2{background:#fff;border:2px solid #5b7fd0;border-radius:16px 22px 18px 24px/22px 16px 24px 18px;box-shadow:3px 4px 0 #dbe6f6}
+body.cozy.school .smBox{background:#fff;border:2px solid #5b7fd0;box-shadow:4px 5px 0 #dbe6f6}
+/* nút chính: bút dạ quang vàng + viền mực */
+body.cozy.school .goBtn,body.cozy.school .qNewBtn,body.cozy.school .wdBtns button.y,body.cozy.school #srsFlipBtn{background:var(--y);border:2px solid #1f3f8f;border-radius:16px 22px 18px 24px/22px 16px 24px 18px;box-shadow:3px 4px 0 #1f3f8f;color:#1f3f8f}
+body.cozy.school .goBtn:active,body.cozy.school .qNewBtn:active,body.cozy.school #srsFlipBtn:active{transform:translate(2px,3px);box-shadow:1px 1px 0 #1f3f8f}
+body.cozy.school .quick button,body.cozy.school .qopts button,body.cozy.school .drOpts button,body.cozy.school .wdBtns button{background:#fff;border:2px solid #b7c9ea;box-shadow:0 3px 0 #dbe6f6;border-radius:16px 22px 18px 24px/22px 16px 24px 18px}
+/* chấm bài: bút đỏ của cô giáo */
+body.cozy.school .qopts button.right,body.cozy.school .drOpts button.right{background:var(--hl-g);border-color:#2f9e44;box-shadow:0 3px 0 #9edbb0;color:#1f3f8f;-webkit-text-fill-color:#1f3f8f;position:relative}
+body.cozy.school .qopts button.right::after,body.cozy.school .drOpts button.right::after{content:"✓";position:absolute;right:8px;top:-6px;font-family:'Mali',cursive;font-weight:700;font-size:26px;color:#e03131;transform:rotate(8deg)}
+body.cozy.school .qopts button.wrong,body.cozy.school .drOpts button.wrong{background:#fff;border-color:#e03131;box-shadow:0 3px 0 #ffc9c9;color:#e03131;-webkit-text-fill-color:#e03131;text-decoration:line-through;text-decoration-thickness:2px}
+/* chip lọc */
+body.cozy.school .libbar button,body.cozy.school .qtabs button{background:#fff;border:2px solid #b7c9ea;box-shadow:0 2px 0 #dbe6f6;color:#1f3f8f;-webkit-text-fill-color:#1f3f8f}
+body.cozy.school .libbar button.on,body.cozy.school .qtabs button.on{background:var(--y);border-color:#1f3f8f;box-shadow:0 2px 0 #1f3f8f}
+body.cozy.school .libbar button.on::before,body.cozy.school .qtabs button.on::before{border-color:#1f3f8f transparent transparent transparent;bottom:-12px}
+body.cozy.school .libbar button.on::after,body.cozy.school .qtabs button.on::after{bottom:-8px}
+body.cozy.school .seg{background:#fff;border:2px solid #b7c9ea}
+body.cozy.school .drLv button,body.cozy.school .vbar button{border-color:#b7c9ea;box-shadow:0 2px 0 #dbe6f6}
+body.cozy.school .drLv button.on,body.cozy.school .vbar button.on{border-color:#1f3f8f;box-shadow:0 2px 0 #1f3f8f}
+body.cozy.school .srsStats>*{border:2px solid #b7c9ea!important;box-shadow:0 3px 0 #dbe6f6!important;background:#fff!important}
+body.cozy.school details.fold,body.cozy.school .srsSet{border-color:#b7c9ea!important}
+/* thanh tiến độ: vệt bút dạ */
+body.cozy.school .pBar{background:#eef3fc;height:12px}
+/* highlight kiểu bút dạ quang: mép hơi lệch */
+body.cozy.school .hp{background:linear-gradient(100deg,transparent 2%,var(--hl-p) 4%,var(--hl-p) 95%,transparent 98%) 0 62%/100% 58% no-repeat}
+body.cozy.school .hy{background:linear-gradient(100deg,transparent 2%,var(--hl-y) 4%,var(--hl-y) 95%,transparent 98%) 0 62%/100% 58% no-repeat}
+body.cozy.school .warn{color:#e03131}
+body.cozy.school .warn b{color:#e03131}
+body.cozy.school .formula{background:#fff;border:2px dashed #f2c94c;box-shadow:inset 0 -10px 0 #fff7b8}
+body.cozy.school .card{background:#fff}
+body.cozy.school .bkTxt,body.cozy.school .tSub,body.cozy.school .shLine{color:var(--muted)}
 </style>
 </head>
 <body>
@@ -1904,7 +2010,7 @@ function settings(refresh){
   if(!m){document.body.insertAdjacentHTML('beforeend','<div id="setModal"><div class="smBg"></div><div class="smBox"></div></div>');m=$('setModal');
     m.addEventListener('click',e=>{if(e.target.classList.contains('smBg')||e.target.closest('.smX'))m.classList.remove('on')})}
   if(refresh&&!m.classList.contains('on'))return;
-  m.querySelector('.smBox').innerHTML=`<button class="smX" aria-label="Đóng">✕</button><h3 class="smH">${ICO.gear} Cài đặt</h3>${window.hskSyncCard?hskSyncCard():''}<div class="setBox"><b style="font-family:'Mali',cursive;font-size:18px">🎨 Giao diện</b><div class="thmSeg"><button data-thm="cozy" class="${document.body.classList.contains('cozy')?'on':''}">Cozy</button><button data-thm="note" class="${document.body.classList.contains('cozy')?'':'on'}">Sổ tay</button></div></div>${BAKHTML}`;
+  m.querySelector('.smBox').innerHTML=`<button class="smX" aria-label="Đóng">✕</button><h3 class="smH">${ICO.gear} Cài đặt</h3>${window.hskSyncCard?hskSyncCard():''}<div class="setBox"><b style="font-family:'Mali',cursive;font-size:18px">🎨 Giao diện</b><div class="thmSeg">${[['school','Học đường'],['cozy','Cozy'],['note','Sổ tay']].map(x=>`<button data-thm="${x[0]}" class="${(window.hskTheme?hskTheme():'school')===x[0]?'on':''}">${x[1]}</button>`).join('')}</div></div>${BAKHTML}`;
   m.classList.add('on');
 }
 window.hskSettings=settings;
@@ -2488,10 +2594,11 @@ render();fromHash();
 })();
 
 /* ===== Theme ===== */
-(()=>{const apply=v=>{const c=v!=='note';document.body.classList.toggle('cozy',c);document.documentElement.classList.toggle('cozyH',c);
-  const m=document.querySelector('meta[name=theme-color]');if(m)m.content=c?'#fff8ea':'#fffdf6'};
-let th='cozy';try{th=localStorage.getItem('hskTheme')||'cozy'}catch(e){}apply(th);
-document.addEventListener('click',e=>{const b=e.target.closest('[data-thm]');if(!b)return;try{localStorage.setItem('hskTheme',b.dataset.thm)}catch(e){}apply(b.dataset.thm);
+(()=>{const apply=v=>{const c=v!=='note',s=v==='school';document.body.classList.toggle('cozy',c);document.body.classList.toggle('school',s);
+  document.documentElement.classList.toggle('cozyH',c&&!s);document.documentElement.classList.toggle('schoolH',s);
+  const m=document.querySelector('meta[name=theme-color]');if(m)m.content=s?'#ffffff':c?'#fff8ea':'#fffdf6'};
+let th='school';try{th=localStorage.getItem('hskTheme2')||'school'}catch(e){}apply(th);window.hskTheme=()=>th;
+document.addEventListener('click',e=>{const b=e.target.closest('[data-thm]');if(!b)return;th=b.dataset.thm;try{localStorage.setItem('hskTheme2',th)}catch(e){}apply(th);
   b.parentElement.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b))});
 })();
 

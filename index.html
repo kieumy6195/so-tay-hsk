@@ -810,6 +810,41 @@ body.cozy .drLv button.on,body.cozy .vbar button.on{background:var(--y);border-c
 .srsCard .lvb.medal.sm{--c:inherit;position:absolute;top:-16px;left:-12px;width:50px;height:50px;padding:0;border-radius:0;color:var(--ink);background:none;z-index:2;--d:rgba(74,46,34,.3)}
 .srsCard .lvb.medal.sm b{font-size:11px}.srsCard .lvb.medal.sm small{font-size:17px;opacity:1;margin-top:-1px}
 @media (prefers-reduced-motion:reduce){.medalW .medal,.medalW .medal.hot{animation:none}}
+
+/* ===== v19: tập viết theo nét ===== */
+.hwBox{margin:12px 0 4px;background:#fffbf0;border:2.5px solid #f0d6ae;border-radius:18px;padding:10px 12px 12px;text-align:center}
+.hwTop{display:flex;align-items:center;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:8px}
+.hwTop b{font-family:'Baloo 2','Mali',cursive;font-weight:800;font-size:16px;margin-right:4px}
+.hwTop button{font-family:var(--zh);font-size:20px;width:40px;height:40px;border:2.5px solid #f0d6ae;background:#fff;border-radius:12px;box-shadow:0 3px 0 #f0d6ae;cursor:pointer;line-height:1}
+.hwTop button.on{background:var(--y);border-color:#c97a2e;box-shadow:0 3px 0 #c97a2e}
+.hwPad{width:230px;height:230px;margin:0 auto;border:2.5px solid #e8a07a;border-radius:12px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg stroke='%23e8a07a' stroke-width='.6' stroke-dasharray='3 3' fill='none'%3E%3Cpath d='M0 0L100 100M100 0L0 100M50 0V100M0 50H100'/%3E%3C/g%3E%3C/svg%3E") center/100% 100%;touch-action:none;position:relative}
+.hwMsg{font-size:13.5px;color:var(--muted);min-height:20px;margin:6px 0 2px}
+.hwMsg.ok{color:#2f9e44;font-weight:700}.hwMsg.no{color:#e8590c}
+.hwBtns{display:flex;gap:8px;justify-content:center;margin-top:6px}
+.hwBtns button{font-family:'Baloo 2','Mali',cursive;font-weight:700;font-size:15px;border:0;border-radius:14px;padding:7px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.hwBtns .a{background:#bfe3ff;box-shadow:0 3px 0 #3a87bd}.hwBtns .b{background:var(--y);box-shadow:0 3px 0 #c97a2e}.hwBtns .c{background:#f3e6cf;box-shadow:0 3px 0 #c9ae86}
+.hwBtns button:active{transform:translateY(3px);box-shadow:none}
+
+/* ===== v20: khiên + hộp quà ===== */
+.week2 .shd i{background:#bfe3ff!important;border-color:#3a87bd!important}.week2 .shd i svg{width:15px;height:15px}
+.shLine{font-size:12.5px;color:var(--muted);text-align:center;margin:8px 0 2px}
+.shLine b{color:var(--ink)}
+#giftBox{margin:10px 0 4px}
+.gBox{display:flex;align-items:center;gap:12px;width:100%;border:2.5px dashed #f2b45e;background:#fff6e0;border-radius:18px;padding:10px 14px;cursor:pointer;text-align:left;font:inherit;color:inherit}
+.gBox svg{width:58px;height:58px;flex:none;animation:gShake 2.2s ease-in-out infinite;transform-origin:50% 90%}
+.gBox b{display:block;font-family:'Baloo 2','Mali',cursive;font-weight:800;font-size:18px}
+.gBox small{color:var(--muted);font-size:12.5px}
+.gBox.opening svg{animation:gOpen .7s ease-in forwards}
+@keyframes gShake{0%,70%,100%{transform:none}75%{transform:rotate(-10deg)}80%{transform:rotate(9deg)}85%{transform:rotate(-7deg)}90%{transform:rotate(5deg)}}
+@keyframes gOpen{0%{transform:scale(1)}40%{transform:scale(1.25) rotate(-8deg)}70%{transform:scale(.9) rotate(6deg)}100%{transform:scale(1.6);opacity:0}}
+.gPrize{border:3px solid #f2c98e;background:#fffdf7;border-radius:20px;padding:12px 14px;box-shadow:0 5px 0 #e8b47a;animation:dealIn .45s cubic-bezier(.2,1.3,.5,1);position:relative}
+.gPrize .gT{display:flex;align-items:center;gap:6px;font-family:'Baloo 2','Mali',cursive;font-weight:800;font-size:14px;color:#c97a2e}
+.gPrize .gT span{margin-left:auto;font-weight:600;font-size:11.5px;color:var(--muted)}
+.gPrize .gW{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:2px 0}
+.gPrize .gW .zh{font-family:var(--zh);font-size:32px}
+.gPrize .gF{font-size:14px;background:#f3f0ff;border-radius:12px;padding:7px 10px;margin-top:6px}
+.gMini{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);background:#fff6e0;border-radius:14px;padding:6px 10px;cursor:pointer;border:0;width:100%;font:inherit}
+.gMini b{font-family:var(--zh);font-size:18px;color:var(--ink);font-weight:400}
 </style>
 </head>
 <body>
@@ -1703,7 +1738,7 @@ function render(sp){
     :`<div class="srsHz">${cur.w}</div>${flipped?'':'<button class="srsSpk sm" data-say="w">🔊</button>'}`;
   let back='';
   if(flipped)back=(mode!=='hm'?`<div class="srsHz">${cur.w}</div>`:'')
-    +`<div class="srsPy">${colorPy(cur.p)}<button class="srsSpk sm" data-say="w">🔊</button></div><div class="hv srsHv">${hvOf(cur.w)}</div>${window.hskMyTip&&hskMyTip(cur.w)?`<div class="srsMy">✍️ ${hskMyTip(cur.w).replace(/</g,"&lt;")}</div>`:""}<button class="srsTipBtn" data-tip="1">💡 Mẹo nhớ</button>`
+    +`<div class="srsPy">${colorPy(cur.p)}<button class="srsSpk sm" data-say="w">🔊</button></div><div class="hv srsHv">${hvOf(cur.w)}</div>${window.hskMyTip&&hskMyTip(cur.w)?`<div class="srsMy">✍️ ${hskMyTip(cur.w).replace(/</g,"&lt;")}</div>`:""}<button class="srsTipBtn" data-tip="1">💡 Mẹo nhớ · ✍️ Tập viết</button>`
     +(mode!=='mh'?`<div class="srsMn">${cur.m}</div>`:'')
     +(cur.e?`<div class="srsEx"><div class="h">${cur.e}<button class="srsSpk sm" data-say="e">🔊</button></div><div>${cur.ep}</div><div style="color:var(--muted)">${cur.ev}</div></div>`:'');
   const know=isNew?'<button class="srsKnow" data-g="4">👌 Từ này thuộc lâu rồi — bỏ qua</button>':'';
@@ -1765,9 +1800,22 @@ window.hskSRS={
     P.forEach(w=>{const c=S.c[w.k];if(c&&c.due<end)due++});
     const per={};WORDS.forEach(w=>{const p=per[w.lv]=per[w.lv]||{l:0,t:0,s:0};p.t++;const c=S.c[w.k];if(c){p.l++;if(c.ivl>=21)p.s++}});
     const k=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-    const d=new Date(),td=log[k(d)]||0;if(!td)d.setDate(d.getDate()-1);
-    let streak=0;while(log[k(d)]){streak++;d.setDate(d.getDate()-1)}
-    return {due,newLeft:Math.min(newLeft(),P.filter(w=>!S.c[w.k]).length),streak,today:td,log,per};
+    let d=new Date();const td=log[k(d)]||0;if(!td)d.setDate(d.getDate()-1);
+    let SH={used:[]};try{SH=JSON.parse(localStorage.getItem('hskShield'))||SH}catch(e){}
+    const used=new Set(SH.used||[]);let changed=false;
+    const wk=x=>{const t=new Date(x.getFullYear(),x.getMonth(),x.getDate());t.setDate(t.getDate()-((t.getDay()+6)%7));return k(t)};
+    const wkOf=s=>{const a=s.split('-').map(Number);return wk(new Date(a[0],a[1]-1,a[2]))};
+    let streak=0,g=0;
+    while(g++<3000){
+      if(log[k(d)]){streak++;d.setDate(d.getDate()-1);continue}
+      const pv=new Date(d);pv.setDate(pv.getDate()-1);
+      if(!log[k(pv)])break;
+      if(!used.has(k(d))){const w=wk(d);if([...used].some(u=>wkOf(u)===w))break;used.add(k(d));changed=true}
+      d=pv;
+    }
+    if(changed){try{localStorage.setItem('hskShield',JSON.stringify({used:[...used].sort().slice(-60)}))}catch(e){}}
+    const nowW=wk(new Date()),usedNow=[...used].find(u=>wkOf(u)===nowW)||'';
+    return {due,newLeft:Math.min(newLeft(),P.filter(w=>!S.c[w.k]).length),streak,today:td,log,per,shield:{left:usedNow?0:1,used:usedNow}};
   }
 };
 })();
@@ -1884,7 +1932,9 @@ function renderHome(){
       </div>
       <div class="medalW" title="Chuỗi ngày học"><span class="medal ${I.streak?'hot':''}"><b>${I.streak}</b><small>ngày</small></span><span class="rib"></span><div class="mLb">${I.streak?'liên tiếp':'bắt đầu nào'}</div></div>
     </div>
-    <div class="week2">${days.map(d=>{const k=dkey(d),on=I.log[k],td=k===dkey(new Date());return `<div class="${on?'on':''} ${td?'td':''}"><i>${on?'✓':''}</i><span>${W[d.getDay()]}</span></div>`}).join('')}</div>
+    <div class="week2">${days.map(d=>{const k=dkey(d),on=I.log[k],td=k===dkey(new Date());const shd=!on&&I.shield&&I.shield.used===k;return `<div class="${on?'on':''} ${td?'td':''} ${shd?'shd':''}"><i>${on?'✓':shd?'🛡':''}</i><span>${W[d.getDay()]}</span></div>`}).join('')}</div>
+    <div class="shLine">${(()=>{const s=I.shield||{left:1};if(s.used){const a=s.used.split('-');return `🛡 Đã dùng khiên ngày ${+a[2]}/${+a[1]} để giữ chuỗi · tuần sau có khiên mới`}return '🛡 Còn <b>1 khiên</b> tuần này · lỡ nghỉ 1 ngày vẫn giữ chuỗi'})()}</div>
+    ${(!todo&&I.today)?'<div id="giftBox"></div>':''}
     <button class="goBtn" data-go="srs">${ICO.srs} ${todo?'Ôn tập ngay':'Ôn thêm'}</button>
   </div>
   <div id="wotdBox"></div>
@@ -1900,7 +1950,7 @@ function renderHome(){
     return `<div class="pRow"><span class="pLb" style="--c:${LVC[l]}">HSK${l}</span><span class="pBar"><i class="a" style="width:${pc}%;background:${LVC[l]}"></i><i class="b" style="width:${ps}%;background:${LVC[l]}"></i></span><span class="pN">${p.l}<small>/${p.t}</small></span></div>`}).join('')}
     <div class="pKey"><i class="k1"></i>đã học <i class="k2"></i>thuộc chắc</div>
   </div>`;
-  window.hskWotd&&hskWotd();
+  window.hskWotd&&hskWotd();window.hskGiftR&&hskGiftR();
 }
 $('homeBox').addEventListener('click',e=>{
   const g=e.target.closest('[data-go]');if(!g)return;const k=g.dataset.go;
@@ -1951,12 +2001,14 @@ function open(word){
       <div class="shPy">${colorPy(w.p)} <button class="srsSpk sm" data-say="${w.w}">🔊</button></div>
       <div class="hv">${hvOf(w.w)}</div><div class="shMn">${w.m}${w.lv?` <span class="shLv">HSK${w.lv}</span>`:''}</div></div></div>
     ${w.e?`<div class="srsEx"><div class="h">${w.e} <button class="srsSpk sm" data-say="${w.e}">🔊</button></div><div>${colorPy(w.ep)}</div><div style="color:var(--muted)">${w.ev}</div></div>`:''}
+    <div class="hwBox" data-hw="${w.w}"></div>
     <h4 class="shH">💡 Mẹo nhớ từng chữ</h4>
     ${[...w.w].filter(c=>/[一-鿿]/.test(c)).map(charTip).join('')}
     <h4 class="shH">✍️ Mẹo của em</h4>
     <textarea id="myTip" data-w="${w.w}" rows="3" placeholder="Tự đặt câu chuyện / liên tưởng của riêng em… (tự lưu)">${my.replace(/</g,'&lt;')}</textarea>
     <div class="shNote">Mẹo tự nghĩ ra thường nhớ lâu nhất. Mẹo này sẽ hiện ở mặt sau thẻ ôn tập.</div>`;
   sh.classList.add('on');document.body.style.overflow='hidden';
+  window.hskHWMount&&hskHWMount(sh.querySelector('.hwBox'));
 }
 function close(){const sh=document.getElementById('sheet');if(sh){sh.classList.remove('on');document.body.style.overflow=''}}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
@@ -2315,13 +2367,15 @@ arrow:s(`<path d="M4.5 12h14M13.5 7l5 5-5 5"/>`),
 people:s(`<circle cx="8.5" cy="8" r="3" ${A}/><circle cx="16.5" cy="9" r="2.5"/><path d="M3.5 19.5c0-3 2.2-5 5-5s5 2 5 5M14 14.5c3 0 6 1.5 6.5 5"/>`),
 heart:s(`<path d="M12 19.5S4 15 4 9.5A4 4 0 0 1 12 8a4 4 0 0 1 8 1.5c0 5.5-8 10-8 10z" fill="#ffc2dd"/>`),
 star:s(`<path d="M12 3.8l2.5 5.2 5.6.7-4.1 3.9 1 5.6-5-2.8-5 2.8 1-5.6-4.1-3.9 5.6-.7z" ${A}/>`),
+shield:s(`<path d="M12 3.5l7 2.8v5.4c0 4.4-3 7.6-7 8.8-4-1.2-7-4.4-7-8.8V6.3z" fill="#bfe3ff"/><path d="M9 12l2.2 2.2L15.5 10"/>`),
+gift:s(`<rect x="4.5" y="10" width="15" height="10" rx="1.5" fill="#ff9b7a"/><rect x="3.5" y="7" width="17" height="3.5" rx="1" fill="#ffc2a8"/><path d="M12 7v13M12 7c-1-3-5-3.5-5-1 0 1.4 3 1.4 5 1zM12 7c1-3 5-3.5 5-1 0 1.4-3 1.4-5 1z"/>`),
 key:s(`<rect x="3" y="6.5" width="18" height="11" rx="2.5" ${A}/><path d="M7 10h.01M10 10h.01M13 10h.01M16 10h.01M8 14h8"/>`),
 check:s(`<path d="M5 12.5l4.5 4.5L19 7.5"/>`)};
 const I=window.ICO||{};const big=k=>(I[k]||'').replace('class="ico"','class="ei"');
 const dot=n=>`<i class="lvdot" style="--c:var(--h${n})"></i>`;
 const M={'🔊':ic.spk,'🔇':ic.mute,'💡':ic.bulb,'👀':ic.eye,'🙈':ic.eyeoff,'🔀':ic.shuf,'🔁':ic.again,'🔄':big('sync'),'🎲':ic.dice,'🎯':ic.target,
 '✅':ic.ok,'❌':ic.no,'✨':ic.spark,'🎉':ic.party,'🏆':ic.trophy,'🏅':ic.star,'👍':ic.star,'⭐':ic.star,'💪':ic.fire,'🔥':ic.fire,'🌱':ic.sprout,
-'⚠':ic.warn,'📋':ic.copy,'📥':ic.down,'⬇':ic.down,'💾':ic.save,'➕':ic.plus,'👉':ic.arrow,'👪':ic.people,'💌':ic.heart,'❤':ic.heart,'⌨':ic.key,'👌':ic.check,
+'⚠':ic.warn,'📋':ic.copy,'📥':ic.down,'⬇':ic.down,'💾':ic.save,'➕':ic.plus,'👉':ic.arrow,'👪':ic.people,'💌':ic.heart,'❤':ic.heart,'⌨':ic.key,'🛡':ic.shield,'🎁':ic.gift,'👌':ic.check,
 '📖':big('lib'),'📒':big('lib'),'📚':big('vocab'),'🔤':big('pin'),'👁':big('shape'),'🎧':big('listen'),'📝':big('gram'),'🧱':big('gram'),'⚖':big('diff'),
 '🧩':big('order'),'✍':big('write'),'🔍':big('search'),'⚙':big('gear'),'🧠':big('srs'),'📦':big('mw'),'🎵':big('tone'),'📅':big('home'),
 '🌸':dot(1),'🍊':dot(2),'💜':dot(3),'🍀':dot(4)};
@@ -2415,6 +2469,76 @@ render();fromHash();
 let th='cozy';try{th=localStorage.getItem('hskTheme')||'cozy'}catch(e){}apply(th);
 document.addEventListener('click',e=>{const b=e.target.closest('[data-thm]');if(!b)return;try{localStorage.setItem('hskTheme',b.dataset.thm)}catch(e){}apply(b.dataset.thm);
   b.parentElement.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b))});
+})();
+
+/* ===== Tập viết theo nét (Hanzi Writer) ===== */
+(()=>{
+let lib=null;
+const load=()=>lib||(lib=new Promise((ok,no)=>{const s=document.createElement('script');s.src='hw/hanzi-writer.min.js';s.onload=()=>ok(window.HanziWriter);s.onerror=()=>{lib=null;no()};document.head.appendChild(s)}));
+window.hskHWMount=box=>{
+  if(!box)return;const chars=[...box.dataset.hw].filter(c=>/[一-鿿]/.test(c));if(!chars.length){box.remove();return}
+  let cur=0,wr=null,mode='';
+  box.innerHTML=`<div class="hwTop"><b>✍️ Tập viết</b>${chars.map((c,i)=>`<button data-hc="${i}" class="${i?'':'on'}">${c}</button>`).join('')}</div>
+    <div class="hwPad"></div><div class="hwMsg">Bấm "Xem nét" để xem thứ tự viết</div>
+    <div class="hwBtns"><button class="a" data-ha="anim">👀 Xem nét</button><button class="b" data-ha="quiz">✍️ Tự viết</button><button class="c" data-ha="out">🔁 Hiện mờ</button></div>`;
+  const pad=box.querySelector('.hwPad'),msg=box.querySelector('.hwMsg');
+  const say=(s,c)=>{msg.textContent=s;msg.className='hwMsg '+(c||'')};
+  const mk=()=>{pad.innerHTML='';return load().then(HW=>{
+    wr=HW.create(pad,chars[cur],{width:226,height:226,padding:14,showOutline:true,showCharacter:true,strokeColor:'#4a2e22',radicalColor:'#e8590c',outlineColor:'#eadfca',drawingColor:'#1c7ed6',drawingWidth:22,charDataLoader:(ch,ok,no)=>fetch('hw/'+ch+'.json').then(r=>{if(!r.ok)throw 0;return r.json()}).catch(()=>fetch('https://cdn.jsdelivr.net/npm/hanzi-writer-data@2.0/'+ch+'.json').then(r=>r.json())).then(ok).catch(no),strokeAnimationSpeed:1.1,delayBetweenStrokes:180,highlightColor:'#ffd65c',
+      onLoadCharDataError:()=>say('Không tải được nét chữ – kiểm tra mạng nhé','no')});
+    return wr}).catch(()=>say('Không tải được công cụ tập viết – kiểm tra mạng nhé','no'))};
+  mk();
+  box.addEventListener('click',e=>{
+    const c=e.target.closest('[data-hc]');
+    if(c){cur=+c.dataset.hc;box.querySelectorAll('[data-hc]').forEach(b=>b.classList.toggle('on',b===c));mk().then(()=>say('Bấm "Xem nét" để xem thứ tự viết'));window.hskSay&&hskSay(chars[cur]);return}
+    const a=e.target.closest('[data-ha]');if(!a||!wr)return;
+    const act=a.dataset.ha;
+    if(act==='anim'){say('Đang viết mẫu…');wr.cancelQuiz&&wr.cancelQuiz();wr.showCharacter();wr.animateCharacter({onComplete:()=>say('Giờ thử "Tự viết" nhé!')})}
+    if(act==='out'){wr.cancelQuiz&&wr.cancelQuiz();wr.showCharacter();wr.showOutline();say('')}
+    if(act==='quiz'){wr.hideCharacter();say('Viết từng nét theo đúng thứ tự…');let miss=0;
+      wr.quiz({showHintAfterMisses:2,highlightOnComplete:true,
+        onMistake:()=>{miss++;say('Chưa đúng nét này, thử lại'+(miss>=2?' (đã gợi ý)':''),'no')},
+        onCorrectStroke:d=>say(`Đúng nét ${d.strokeNum+1}/${d.strokeNum+1+d.strokesRemaining}`),
+        onComplete:d=>{const m=d.totalMistakes;say(m?`Xong! Sai ${m} lần – viết lại cho nhớ nhé`:'Hoàn hảo! Không sai nét nào','ok');
+          if(!m&&window.hskCheer)hskCheer(pad,true);
+          if(cur<chars.length-1)setTimeout(()=>{const nb=box.querySelector(`[data-hc="${cur+1}"]`);nb&&nb.click()},1400)}})}
+  });
+};
+})();
+
+/* ===== Hộp quà mỗi ngày ===== */
+(()=>{
+const SVG=`<svg viewBox="0 0 64 64" fill="none" stroke="#4a2e22" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"><rect x="10" y="28" width="44" height="28" rx="4" fill="#ff9b7a"/><rect x="7" y="19" width="50" height="11" rx="3" fill="#ffc2a8"/><path d="M29 19h6v37h-6z" fill="#ffd65c"/><path d="M32 19c-3-8-14-10-14-3 0 4 8 4 14 3zM32 19c3-8 14-10 14-3 0 4-8 4-14 3z" fill="#ffd65c"/><path d="M15 36l3 3M47 44l3-3" stroke="#fff" stroke-width="2"/></svg>`;
+const dk=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const get=()=>{try{return JSON.parse(localStorage.getItem('hskGift'))||{}}catch(e){return {}}};
+const put=v=>{try{localStorage.setItem('hskGift',JSON.stringify(v))}catch(e){}};
+let D=null,show=false;
+const data=()=>D?Promise.resolve(D):fetch('wotd.json').then(r=>r.json()).then(j=>D=j);
+function prize(g){const w=D&&D.words.find(x=>x.w===g.w);if(!w)return '';
+  return `<div class="gPrize"><div class="gT">🎁 Quà hôm nay<span>đã mở ${g.n||1} hộp</span></div>
+  <div class="gW"><span class="zh">${w.w}</span><span>${colorPy(w.p)}</span><button class="wdSpk" data-gsay="${w.w}">🔊</button></div>
+  <div><b>${w.m}</b> · <span class="hv" style="display:inline">${w.hv}</span></div>
+  <div class="gF">✨ ${w.f}</div></div>`}
+function render(){
+  const box=document.getElementById('giftBox');if(!box)return;const g=get(),today=dk(new Date());
+  if(g.d!==today){box.innerHTML=`<button class="gBox" data-gopen="1">${SVG}<div><b>Mở quà hôm nay!</b><small>Xong bài ôn rồi – nhận 1 thẻ "Bạn có biết?" bất ngờ</small></div></button>`;return}
+  if(show){data().then(()=>{box.innerHTML=prize(g)});return}
+  data().then(()=>{const w=D.words.find(x=>x.w===g.w);box.innerHTML=`<button class="gMini" data-gshow="1">🎁 Quà hôm nay: <b>${g.w}</b> ${w?w.m:''} · xem lại</button>`});
+}
+window.hskGiftR=()=>{show=false;render()};
+document.addEventListener('click',e=>{
+  const s=e.target.closest('[data-gsay]');if(s){window.hskSay&&hskSay(s.dataset.gsay);return}
+  if(e.target.closest('[data-gshow]')){show=true;render();return}
+  const b=e.target.closest('[data-gopen]');if(!b)return;
+  b.classList.add('opening');b.disabled=true;
+  data().then(()=>{
+    const g=get(),seen=new Set(g.seen||[]),pick0=(()=>{const N=D.words.length,s=D.start.split('-').map(Number),a=new Date(s[0],s[1]-1,s[2]),n=new Date();n.setHours(0,0,0,0);return D.words[((Math.round((n-a)/864e5)%N)+N)%N].w})();
+    let pool=D.words.filter(x=>x.w!==pick0&&!seen.has(x.w));if(!pool.length){seen.clear();pool=D.words.filter(x=>x.w!==pick0)}
+    const w=pool[Math.random()*pool.length|0];seen.add(w.w);
+    const ng={d:dk(new Date()),w:w.w,n:(g.n||0)+1,seen:[...seen]};put(ng);
+    setTimeout(()=>{show=true;render();const box=document.getElementById('giftBox');window.hskCheer&&hskCheer(box,true);window.hskSay&&hskSay(w.w)},650);
+  }).catch(()=>{b.classList.remove('opening');b.disabled=false});
+});
 })();
 </script>
 </body>
